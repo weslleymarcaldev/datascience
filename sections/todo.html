@@ -1,0 +1,114 @@
+<section id="pagina-todo" class="page-section container-fluid">
+    <h2 class="mb-4 text-light d-flex align-items-center gap-2">
+        <i class="bi bi-kanban"></i>
+        <span>To-do</span>
+    </h2>
+    <p class="text-secondary">Arraste as tarefas entre colunas conforme você avança.</p>
+
+    <div class="row g-4">
+
+        <!-- COLUNA ESTUDAR -->
+        <div class="col-lg-4">
+            <div class="card bg-dark border border-secondary rounded-3 overflow-hidden">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="m-0 d-flex align-items-center gap-2">
+                        <i class="bi bi-book"></i>
+                        <span>Estudar</span>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <!-- lista-estudar é uma dropzone -->
+                    <ul id="lista-estudar"
+                        class="list-group list-group-flush min-vh-25 todo-coluna"
+                        data-coluna="estudar">
+                        <!-- itens li injetados via JS -->
+                    </ul>
+
+                    <div class="input-group mt-3">
+                        <input type="text" id="input-estudar" class="form-control bg-black text-light border-secondary" placeholder="Nova tarefa...">
+                        <button class="btn btn-primary" onclick="adicionarTarefa('estudar')">
+                            <i class="bi bi-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COLUNA PRATICAR -->
+        <div class="col-lg-4">
+            <div class="card bg-dark border border-secondary rounded-3 overflow-hidden">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="m-0 d-flex align-items-center gap-2">
+                        <i class="bi bi-code-slash"></i>
+                        <span>Praticar</span>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <!-- lista-praticar é uma dropzone -->
+                    <ul id="lista-praticar"
+                        class="list-group list-group-flush min-vh-25 todo-coluna"
+                        data-coluna="praticar">
+                        <!-- itens li injetados via JS -->
+                    </ul>
+
+                    <div class="input-group mt-3">
+                        <input type="text" id="input-praticar" class="form-control bg-black text-light border-secondary" placeholder="Nova tarefa...">
+                        <button class="btn btn-warning text-dark" onclick="adicionarTarefa('praticar')">
+                            <i class="bi bi-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COLUNA ENTREGAR -->
+        <div class="col-lg-4">
+            <div class="card bg-dark border border-secondary rounded-3 overflow-hidden">
+                <div class="card-header bg-success text-white">
+                    <h5 class="m-0 d-flex align-items-center gap-2">
+                        <i class="bi bi-check-circle"></i>
+                        <span>Entregar</span>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <!-- lista-entregar é uma dropzone -->
+                    <ul id="lista-entregar"
+                        class="list-group list-group-flush min-vh-25 todo-coluna"
+                        data-coluna="entregar">
+                        <!-- itens li injetados via JS -->
+                    </ul>
+
+                    <div class="input-group mt-3">
+                        <input type="text" id="input-entregar" class="form-control bg-black text-light border-secondary" placeholder="Nova tarefa...">
+                        <button class="btn btn-success" onclick="adicionarTarefa('entregar')">
+                            <i class="bi bi-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* deixa as colunas com uma altura mínima pra facilitar arrastar */
+    .min-vh-25 {
+        min-height: 25vh;
+    }
+
+    /* visual quando a coluna está em foco de drop */
+    .todo-coluna.drag-over {
+        background-color: rgba(0, 123, 255, 0.1); /* leve destaque */
+        border: 1px dashed rgba(0, 123, 255, 0.6);
+        border-radius: .5rem;
+    }
+
+    /* cursor de arrastar */
+    .todo-item {
+        cursor: grab;
+    }
+    .todo-item:active {
+        cursor: grabbing;
+    }
+</style>

@@ -1,0 +1,882 @@
+<section id="pagina-grade" class="container-fluid page-section text-light">
+    <h2 class="mb-4 text-light d-flex align-items-center gap-2">
+        <i class="bi bi-journal-text text-primary"></i>
+        <span>Grade Curricular</span>
+    </h2>
+
+    <p class="text-secondary small mb-4">
+        Plano de Formação em Data Science Profissional
+    </p>
+
+    <!-- AÇÕES GERAIS -->
+    <div class="d-flex flex-wrap gap-2 mb-4">
+        <button class="btn btn-sm btn-primary" id="btn-salvar-grade">
+            <i class="bi bi-save me-1"></i> Salvar Tudo
+        </button>
+    </div>
+
+    <style>
+        .grade-period-card {
+            background-color: #1a2332;
+            border: 1px solid #2a3a4f;
+            border-radius: 12px;
+            padding: 1rem 1rem 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .grade-period-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: .75rem;
+        }
+
+        .grade-period-title {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.4;
+        }
+
+        .grade-period-sub {
+            font-size: .8rem;
+            color: #9aa5b1;
+            font-weight: 400;
+        }
+
+        .grade-period-actions .btn {
+            font-size: .75rem;
+            line-height: 1.2;
+        }
+
+        .grade-period-table th,
+        .grade-period-table td {
+            vertical-align: middle !important;
+            font-size: 0.85rem;
+        }
+
+        .grade-period-table th {
+            white-space: nowrap;
+        }
+
+        .table-dark.table-sm td,
+        .table-dark.table-sm th {
+            padding-top: .4rem;
+            padding-bottom: .4rem;
+        }
+
+        .col-acoes {
+            width: 110px;
+            min-width: 110px;
+            text-align: center;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .editing {
+            background-color: rgba(250, 204, 21, 0.08) !important;
+            /* amarelo leve */
+        }
+    </style>
+
+    <!-- TEMPLATE DE PERÍODO -->
+    <!-- Reutilizamos a mesma estrutura para todos os períodos -->
+    <!-- Cada período vira um .grade-period-card com tabela interna -->
+
+    <!-- 1º Período -->
+    <div class="grade-period-card" data-periodo="1">
+        <div class="grade-period-header">
+            <div class="grade-period-title">
+                <span>1º Período — Fundamentos de Programação e Lógica</span>
+                <span class="grade-period-sub">
+                    Python, lógica, base matemática e visão inicial de Ciência de Dados
+                </span>
+            </div>
+
+            <div class="grade-period-actions d-flex flex-wrap gap-2">
+                <button class="btn btn-outline-success btn-sm btn-add-linha" data-target="#periodo-1-tabela">
+                    <i class="bi bi-plus-circle me-1"></i> Adicionar disciplina
+                </button>
+                <button class="btn btn-outline-info btn-sm btn-toggle-visibilidade" data-target="#periodo-1-tabela">
+                    <i class="bi bi-eye-slash me-1"></i> Esconder
+                </button>
+
+            </div>
+        </div>
+
+        <div class="table-responsive" id="periodo-1-tabela">
+            <table class="table table-dark table-striped table-bordered table-sm grade-period-table m-0">
+                <thead class="table-secondary text-dark">
+                    <tr>
+                        <th>Disciplina</th>
+                        <th>Código</th>
+                        <th>Pré-requisito</th>
+                        <th class="col-acoes">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Programação e Desenv. de Software I (Python, Git, boas práticas)</td>
+                        <td>DIG - DCC203</td>
+                        <td>-</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Introdução à Lógica Computacional (raciocínio lógico, booleano)</td>
+                        <td>DIG - DCC638</td>
+                        <td>-</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fundamentos de Ciência de Dados (ciclo de dados, ética inicial, pandas básico)</td>
+                        <td>DIG - ICE071</td>
+                        <td>-</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cálculo Diferencial e Integral I</td>
+                        <td>DIG - MAT001</td>
+                        <td>-</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 2º Período -->
+    <div class="grade-period-card" data-periodo="2">
+        <div class="grade-period-header">
+            <div class="grade-period-title">
+                <span>2º Período — Matemática de Base para IA</span>
+                <span class="grade-period-sub">
+                    Álgebra Linear, Probabilidade inicial e Estatística básica
+                </span>
+            </div>
+
+            <div class="grade-period-actions d-flex flex-wrap gap-2">
+                <button class="btn btn-outline-success btn-sm btn-add-linha" data-target="#periodo-2-tabela">
+                    <i class="bi bi-plus-circle me-1"></i> Adicionar disciplina
+                </button>
+                <button class="btn btn-outline-info btn-sm btn-toggle-visibilidade" data-target="#periodo-2-tabela">
+                    <i class="bi bi-eye-slash me-1"></i> Esconder
+                </button>
+            </div>
+        </div>
+
+        <div class="table-responsive" id="periodo-2-tabela">
+            <table class="table table-dark table-striped table-bordered table-sm grade-period-table m-0">
+                <thead class="table-secondary text-dark">
+                    <tr>
+                        <th>Disciplina</th>
+                        <th>Código</th>
+                        <th>Pré-requisito</th>
+                        <th class="col-acoes">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Programação e Desenv. de Software II (estruturas mais avançadas)</td>
+                        <td>DIG - DCC204</td>
+                        <td>DCC203</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Matemática Discreta (bases teóricas de computação e grafos)</td>
+                        <td>DIG - DCC216</td>
+                        <td>DCC638</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Estatística Básica (descrição de dados, média, variância)</td>
+                        <td>DIG - EST229</td>
+                        <td>ICE071</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Geometria Analítica e Álgebra Linear</td>
+                        <td>DIG - MAT038</td>
+                        <td>-</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cálculo Diferencial e Integral II</td>
+                        <td>DIG - MAT039</td>
+                        <td>MAT001</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 3º Período -->
+    <div class="grade-period-card" data-periodo="3">
+        <div class="grade-period-header">
+            <div class="grade-period-title">
+                <span>3º Período — Estruturas e Dados</span>
+                <span class="grade-period-sub">
+                    Estrutura de Dados, SQL e Probabilidade para modelagem
+                </span>
+            </div>
+
+            <div class="grade-period-actions d-flex flex-wrap gap-2">
+                <button class="btn btn-outline-success btn-sm btn-add-linha" data-target="#periodo-3-tabela">
+                    <i class="bi bi-plus-circle me-1"></i> Adicionar disciplina
+                </button>
+                <button class="btn btn-outline-info btn-sm btn-toggle-visibilidade" data-target="#periodo-3-tabela">
+                    <i class="bi bi-eye-slash me-1"></i> Esconder
+                </button>
+            </div>
+        </div>
+
+        <div class="table-responsive" id="periodo-3-tabela">
+            <table class="table table-dark table-striped table-bordered table-sm grade-period-table m-0">
+                <thead class="table-secondary text-dark">
+                    <tr>
+                        <th>Disciplina</th>
+                        <th>Código</th>
+                        <th>Pré-requisito</th>
+                        <th class="col-acoes">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Introdução a Banco de Dados (modelagem relacional, SQL)</td>
+                        <td>DIG - DCC011</td>
+                        <td>DCC204, DCC638</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Estruturas de Dados (listas, árvores, filas, hash)</td>
+                        <td>DIG - DCC205</td>
+                        <td>DCC204</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Álgebra Linear Computacional (operações de vetores/matrizes em código)</td>
+                        <td>DIG - DCC639</td>
+                        <td>MAT001, MAT038</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Probabilidade (modelagem de incerteza, base p/ inferência e ML)</td>
+                        <td>DIG - EST230</td>
+                        <td>MAT039</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 4º Período -->
+    <div class="grade-period-card" data-periodo="4">
+        <div class="grade-period-header">
+            <div class="grade-period-title">
+                <span>4º Período — Estatística Inferencial e Data Science Prático</span>
+                <span class="grade-period-sub">
+                    Regressão, Inferência, Algoritmos e Introdução formal a Ciência de Dados
+                </span>
+            </div>
+
+            <div class="grade-period-actions d-flex flex-wrap gap-2">
+                <button class="btn btn-outline-success btn-sm btn-add-linha" data-target="#periodo-4-tabela">
+                    <i class="bi bi-plus-circle me-1"></i> Adicionar disciplina
+                </button>
+                <button class="btn btn-outline-info btn-sm btn-toggle-visibilidade" data-target="#periodo-4-tabela">
+                    <i class="bi bi-eye-slash me-1"></i> Esconder
+                </button>
+            </div>
+        </div>
+
+        <div class="table-responsive" id="periodo-4-tabela">
+            <table class="table table-dark table-striped table-bordered table-sm grade-period-table m-0">
+                <thead class="table-secondary text-dark">
+                    <tr>
+                        <th>Disciplina</th>
+                        <th>Código</th>
+                        <th>Pré-requisito</th>
+                        <th class="col-acoes">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Algoritmos I</td>
+                        <td>DIG - DCC206</td>
+                        <td>DCC205</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Análise de Regressão (regressão linear, avaliação de modelos preditivos)</td>
+                        <td>DIG - EST035</td>
+                        <td>EST229</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Inferência Clássica (testes de hipótese, estimadores)</td>
+                        <td>DIG - EST231</td>
+                        <td>EST230</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Introdução à Ciência de Dados (pipeline completo, limpeza, análise)</td>
+                        <td>DIG - ICE072</td>
+                        <td>DCC639, EST230</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 5º Período -->
+    <div class="grade-period-card" data-periodo="5">
+        <div class="grade-period-header">
+            <div class="grade-period-title">
+                <span>5º Período — Engenharia de Software e IA Clássica</span>
+                <span class="grade-period-sub">
+                    Arquitetura, Mineração de Dados e Estatística Bayesiana
+                </span>
+            </div>
+
+            <div class="grade-period-actions d-flex flex-wrap gap-2">
+                <button class="btn btn-outline-success btn-sm btn-add-linha" data-target="#periodo-5-tabela">
+                    <i class="bi bi-plus-circle me-1"></i> Adicionar disciplina
+                </button>
+                <button class="btn btn-outline-info btn-sm btn-toggle-visibilidade" data-target="#periodo-5-tabela">
+                    <i class="bi bi-eye-slash me-1"></i> Esconder
+                </button>
+            </div>
+        </div>
+
+        <div class="table-responsive" id="periodo-5-tabela">
+            <table class="table table-dark table-striped table-bordered table-sm grade-period-table m-0">
+                <thead class="table-secondary text-dark">
+                    <tr>
+                        <th>Disciplina</th>
+                        <th>Código</th>
+                        <th>Pré-requisito</th>
+                        <th class="col-acoes">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Fundamentos de Arquitetura de Computadores</td>
+                        <td>DIG - DCC074</td>
+                        <td>-</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Engenharia de Software (boas práticas, versionamento, ciclo de vida)</td>
+                        <td>DIG - DCC603</td>
+                        <td>DCC205</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Introdução à Inteligência Artificial (busca, heurísticas, agentes)</td>
+                        <td>DIG - DCC642</td>
+                        <td>-</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Modelos Lineares Generalizados</td>
+                        <td>DIG - EST079</td>
+                        <td>EST035, EST231</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Inferência Estatística Bayesiana (razão de verossimilhança, prior/posterior)</td>
+                        <td>DIG - EST088</td>
+                        <td>EST230, EST231</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Mineração de Dados (processo de descoberta de padrões, preparação de dados)</td>
+                        <td>DIG - ICE144</td>
+                        <td>ICE072</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 6º Período -->
+    <div class="grade-period-card" data-periodo="6">
+        <div class="grade-period-header">
+            <div class="grade-period-title">
+                <span>6º Período — Machine Learning e Ética</span>
+                <span class="grade-period-sub">
+                    Modelagem real, impacto social, IA responsável e estatística aplicada
+                </span>
+            </div>
+
+            <div class="grade-period-actions d-flex flex-wrap gap-2">
+                <button class="btn btn-outline-success btn-sm btn-add-linha" data-target="#periodo-6-tabela">
+                    <i class="bi bi-plus-circle me-1"></i> Adicionar disciplina
+                </button>
+                <button class="btn btn-outline-info btn-sm btn-toggle-visibilidade" data-target="#periodo-6-tabela">
+                    <i class="bi bi-eye-slash me-1"></i> Esconder
+                </button>
+            </div>
+        </div>
+
+        <div class="table-responsive" id="periodo-6-tabela">
+            <table class="table table-dark table-striped table-bordered table-sm grade-period-table m-0">
+                <thead class="table-secondary text-dark">
+                    <tr>
+                        <th>Disciplina</th>
+                        <th>Código</th>
+                        <th>Pré-requisito</th>
+                        <th class="col-acoes">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Fundamentos de Sistemas Computacionais</td>
+                        <td>DIG - DCC075</td>
+                        <td>DCC074</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Estatística Multivariada (PCA, componentes latentes)</td>
+                        <td>DIG - EST011</td>
+                        <td>EST035, MAT038, EST231</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Estatística Não Paramétrica</td>
+                        <td>DIG - EST080</td>
+                        <td>EST231</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ciência de Dados e Sociedade (impacto social de IA / dados)</td>
+                        <td>DIG - ICE145</td>
+                        <td>ICE072</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ética e Ciência de Dados (uso responsável, viés de modelo)</td>
+                        <td>DIG - ICE146</td>
+                        <td>ICE072</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Aprendizado de Máquina Supervisionado (scikit-learn, avaliação de modelos)</td>
+                        <td>DIG - ICE147</td>
+                        <td>ICE144</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 7º Período -->
+    <div class="grade-period-card" data-periodo="7">
+        <div class="grade-period-header">
+            <div class="grade-period-title">
+                <span>7º Período — Visão Computacional, Previsão e ML Avançado</span>
+                <span class="grade-period-sub">
+                    Modelos de previsão, visão computacional e aprendizado não supervisionado
+                </span>
+            </div>
+
+            <div class="grade-period-actions d-flex flex-wrap gap-2">
+                <button class="btn btn-outline-success btn-sm btn-add-linha" data-target="#periodo-7-tabela">
+                    <i class="bi bi-plus-circle me-1"></i> Adicionar disciplina
+                </button>
+                <button class="btn btn-outline-info btn-sm btn-toggle-visibilidade" data-target="#periodo-7-tabela">
+                    <i class="bi bi-eye-slash me-1"></i> Esconder
+                </button>
+            </div>
+        </div>
+
+        <div class="table-responsive" id="periodo-7-tabela">
+            <table class="table table-dark table-striped table-bordered table-sm grade-period-table m-0">
+                <thead class="table-secondary text-dark">
+                    <tr>
+                        <th>Disciplina</th>
+                        <th>Código</th>
+                        <th>Pré-requisito</th>
+                        <th class="col-acoes">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Recuperação de Informação (busca, indexação, relevância)</td>
+                        <td>DIG - DCC076</td>
+                        <td>DCC206</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Introdução à Computação Visual (visão computacional e visão por computador)</td>
+                        <td>DIG - DCC077</td>
+                        <td>MAT038</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Métodos Estatísticos de Previsão (time series, forecasting)</td>
+                        <td>DIG - EST038</td>
+                        <td>EST231</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Análise de Sobrevivência (modelos de risco ao longo do tempo)</td>
+                        <td>DIG - EST090</td>
+                        <td>EST035, EST231</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Aprendizado de Máquina Não Supervisionado (clusterização, redução de dimensionalidade)</td>
+                        <td>DIG - ICE148</td>
+                        <td>ICE147</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-warning btn-editar"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    /*
+        Funcionalidades JS básicas:
+        - esconder/mostrar período
+        - deletar linha
+        - editar inline / salvar linha
+        - "ver" (aqui só dá um alert, mas você pode trocar por modal)
+        - salvar tudo (ex.: enviar JSON pro backend ou salvar localStorage)
+    */
+
+    (function () {
+        // --- TOGGLE VISIBILIDADE (já existia) ---
+        document.querySelectorAll(".btn-toggle-visibilidade").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const targetSel = btn.getAttribute("data-target");
+                const alvo = document.querySelector(targetSel);
+                if (!alvo) return;
+
+                const isHidden = alvo.classList.contains("hidden");
+                if (isHidden) {
+                    alvo.classList.remove("hidden");
+                    btn.innerHTML = '<i class="bi bi-eye-slash me-1"></i> Esconder';
+                } else {
+                    alvo.classList.add("hidden");
+                    btn.innerHTML = '<i class="bi bi-eye me-1"></i> Mostrar';
+                }
+            });
+        });
+
+        // --- EVENT DELEGATION PARA AÇÕES POR LINHA ---
+        // vamos usar o container principal pra capturar cliques nas tabelas
+        document.addEventListener("click", (ev) => {
+            const btn = ev.target.closest("button");
+            if (!btn) return;
+
+            // deletar
+            if (btn.classList.contains("btn-deletar")) {
+                const tr = btn.closest("tr");
+                if (tr && confirm("Remover esta disciplina da grade?")) {
+                    tr.remove();
+                }
+                return;
+            }
+
+            // visualizar
+            if (btn.classList.contains("btn-ver")) {
+                const tr = btn.closest("tr");
+                if (!tr) return;
+                const cols = tr.querySelectorAll("td");
+                const nome = cols[0]?.innerText || "";
+                const codigo = cols[1]?.innerText || "";
+                const carga = cols[2]?.innerText || "";
+                const prereq = cols[3]?.innerText || "";
+                alert(
+                    "Disciplina: " + nome + "\n" +
+                    "Código: " + codigo + "\n" +
+                    "Carga: " + carga + "\n" +
+                    "Pré-req: " + prereq
+                );
+                return;
+            }
+
+            // editar/salvar inline
+            if (btn.classList.contains("btn-editar")) {
+                const tr = btn.closest("tr");
+                if (!tr) return;
+
+                const isEditing = tr.classList.contains("editing");
+
+                if (!isEditing) {
+                    // entrar modo edição
+                    tr.classList.add("editing");
+                    btn.classList.remove("btn-warning");
+                    btn.classList.add("btn-success");
+                    btn.innerHTML = '<i class="bi bi-check-lg"></i>';
+
+                    const tds = tr.querySelectorAll("td");
+                    for (let i = 0; i < tds.length - 1; i++) {
+                        const original = tds[i].innerText;
+                        tds[i].setAttribute("data-original", original);
+                        tds[i].innerHTML =
+                            '<input class="form-control form-control-sm" value="' +
+                            original.replace(/"/g, "&quot;") +
+                            '"/>';
+                    }
+                } else {
+                    // sair modo edição (salvar)
+                    tr.classList.remove("editing");
+                    btn.classList.remove("btn-success");
+                    btn.classList.add("btn-warning");
+                    btn.innerHTML = '<i class="bi bi-pencil-square"></i>';
+
+                    const tds = tr.querySelectorAll("td");
+                    for (let i = 0; i < tds.length - 1; i++) {
+                        const input = tds[i].querySelector("input");
+                        const novoValor = input ? input.value : tds[i].innerText;
+                        tds[i].innerText = novoValor;
+                    }
+                }
+                return;
+            }
+
+            // adicionar nova linha no período certo
+            if (btn.classList.contains("btn-add-linha")) {
+                const alvoTabelaSel = btn.getAttribute("data-target");         // ex: "#periodo-3-tabela"
+                const tbody = document.querySelector(alvoTabelaSel + " tbody"); // pega o tbody daquele período
+                if (!tbody) return;
+
+                const novaLinha = document.createElement("tr");
+                novaLinha.classList.add("editing");
+
+                // importante: manter as mesmas colunas que sua tabela usa
+                novaLinha.innerHTML = `
+                <td><input class="form-control form-control-sm" placeholder="Nome da disciplina"></td>
+                <td><input class="form-control form-control-sm" placeholder="Código"></td>
+                <td><input class="form-control form-control-sm" placeholder="Pré-req"></td>
+                <td class="text-center">
+                    <button class="btn btn-sm btn-warning btn-editar"><i class="bi bi-pencil-square"></i></button>
+                    <button class="btn btn-sm btn-danger btn-deletar"><i class="bi bi-trash"></i></button>
+                    <button class="btn btn-sm btn-secondary btn-ver"><i class="bi bi-eye"></i></button>
+                </td>
+            `;
+
+                tbody.appendChild(novaLinha);
+                return;
+            }
+        });
+
+        // --- SALVAR TUDO EM JSON / LOCALSTORAGE ---
+        const btnSalvarTudo = document.getElementById("btn-salvar-grade");
+        if (btnSalvarTudo) {
+            btnSalvarTudo.addEventListener("click", () => {
+                const resultado = [];
+
+                document.querySelectorAll(".grade-period-card").forEach(periodCard => {
+                    const periodoNum = periodCard.getAttribute("data-periodo");
+                    const periodoObj = {
+                        periodo: periodoNum,
+                        disciplinas: []
+                    };
+
+                    periodCard.querySelectorAll("tbody tr").forEach(tr => {
+                        const cols = tr.querySelectorAll("td");
+                        if (cols.length < 4) return;
+                        periodoObj.disciplinas.push({
+                            nome: cols[0]?.innerText.trim(),
+                            codigo: cols[1]?.innerText.trim(),
+                            prereq: cols[3]?.innerText.trim()
+                        });
+                    });
+
+                    resultado.push(periodoObj);
+                });
+
+                console.log("GRADE SALVA: ", resultado);
+                localStorage.setItem("cdd_grade_curricular", JSON.stringify(resultado));
+                alert("Grade salva.");
+            });
+        }
+
+    })();
+
+</script>

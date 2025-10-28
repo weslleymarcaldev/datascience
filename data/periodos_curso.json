@@ -1,0 +1,378 @@
+{
+    "1": [
+        {
+            "codigo": "DCC203",
+            "nome": "Programação e Desenvolvimento de Software I",
+            "ch": 60,
+            "creditos": 4,
+            "pre": []
+        },
+        {
+            "codigo": "DCC638",
+            "nome": "Introdução à Lógica Computacional",
+            "ch": 60,
+            "creditos": 4,
+            "pre": []
+        },
+        {
+            "codigo": "ICE071",
+            "nome": "Fundamentos de Ciência de Dados",
+            "ch": 60,
+            "creditos": 4,
+            "pre": []
+        },
+        {
+            "codigo": "MAT001",
+            "nome": "Cálculo Diferencial e Integral I",
+            "ch": 90,
+            "creditos": 6,
+            "pre": []
+        },
+        {
+            "codigo": "CAD103",
+            "nome": "Administração TGA",
+            "ch": 60,
+            "creditos": 4,
+            "pre": []
+        }
+    ],
+    "2": [
+        {
+            "codigo": "DCC204",
+            "nome": "Programação e Desenvolvimento de Software II",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "DCC203"
+            ]
+        },
+        {
+            "codigo": "DCC216",
+            "nome": "Matemática Discreta",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "DCC638"
+            ]
+        },
+        {
+            "codigo": "EST229",
+            "nome": "Estatística Básica",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "ICE071"
+            ]
+        },
+        {
+            "codigo": "MAT038",
+            "nome": "Geometria Analítica e Álgebra Linear",
+            "ch": 60,
+            "creditos": 4,
+            "pre": []
+        },
+        {
+            "codigo": "MAT039",
+            "nome": "Cálculo Diferencial e Integral II",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "MAT001"
+            ]
+        }
+    ],
+    "3": [
+        {
+            "codigo": "DCC011",
+            "nome": "Introdução a Banco de Dados",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "DCC204",
+                "DCC638"
+            ]
+        },
+        {
+            "codigo": "DCC205",
+            "nome": "Estruturas de Dados",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "DCC204"
+            ]
+        },
+        {
+            "codigo": "DCC639",
+            "nome": "Álgebra Linear Computacional",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "MAT001",
+                "MAT038"
+            ]
+        },
+        {
+            "codigo": "ECN140",
+            "nome": "Introdução à Economia",
+            "ch": 60,
+            "creditos": 4,
+            "pre": []
+        },
+        {
+            "codigo": "EST230",
+            "nome": "Probabilidade",
+            "ch": 90,
+            "creditos": 6,
+            "pre": [
+                "MAT039"
+            ]
+        }
+    ],
+    "4": [
+        {
+            "codigo": "DCC194",
+            "nome": "Interação Humano-Computador",
+            "ch": 60,
+            "creditos": 4,
+            "pre": []
+        },
+        {
+            "codigo": "DCC206",
+            "nome": "Algoritmos I",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "DCC205"
+            ]
+        },
+        {
+            "codigo": "EST035",
+            "nome": "Análise de Regressão",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "EST229"
+            ]
+        },
+        {
+            "codigo": "EST231",
+            "nome": "Inferência Clássica",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "EST230"
+            ]
+        },
+        {
+            "codigo": "ICE072",
+            "nome": "Introdução à Ciência de Dados",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "DCC639",
+                "EST230"
+            ]
+        }
+    ],
+    "5": [
+        {
+            "codigo": "DCC074",
+            "nome": "Fundamentos de Arquitetura de Computadores",
+            "ch": 60,
+            "creditos": 4,
+            "pre": []
+        },
+        {
+            "codigo": "DCC603",
+            "nome": "Engenharia de Software",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "DCC205"
+            ]
+        },
+        {
+            "codigo": "DCC642",
+            "nome": "Introdução à Inteligência Artificial",
+            "ch": 30,
+            "creditos": 2,
+            "pre": []
+        },
+        {
+            "codigo": "EST079",
+            "nome": "Modelos Lineares Generalizados",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "EST035",
+                "EST231"
+            ]
+        },
+        {
+            "codigo": "EST088",
+            "nome": "Inferência Estatística com Abordagem Bayesiana",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "EST230",
+                "EST231"
+            ]
+        },
+        {
+            "codigo": "ICE144",
+            "nome": "Mineração de Dados",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "ICE072"
+            ]
+        }
+    ],
+    "6": [
+        {
+            "codigo": "DCC075",
+            "nome": "Fundamentos de Sistemas Computacionais",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "DCC074"
+            ]
+        },
+        {
+            "codigo": "EST011",
+            "nome": "Estatística Multivariada",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "EST035",
+                "MAT038",
+                "EST231"
+            ]
+        },
+        {
+            "codigo": "EST080",
+            "nome": "Estatística Não Paramétrica",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "EST231"
+            ]
+        },
+        {
+            "codigo": "ICE145",
+            "nome": "Ciência de Dados e Sociedade",
+            "ch": 30,
+            "creditos": 2,
+            "pre": [
+                "ICE072"
+            ]
+        },
+        {
+            "codigo": "ICE146",
+            "nome": "Ética e Ciência de Dados",
+            "ch": 30,
+            "creditos": 2,
+            "pre": [
+                "ICE072"
+            ]
+        },
+        {
+            "codigo": "ICE147",
+            "nome": "Aprendizado de Máquina Supervisionado",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "ICE144"
+            ]
+        }
+    ],
+    "7": [
+        {
+            "codigo": "DCC076",
+            "nome": "Recuperação de Informação",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "DCC206"
+            ]
+        },
+        {
+            "codigo": "DCC077",
+            "nome": "Introdução à Computação Visual",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "MAT038"
+            ]
+        },
+        {
+            "codigo": "EST038",
+            "nome": "Métodos Estatísticos de Previsão",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "EST231"
+            ]
+        },
+        {
+            "codigo": "EST090",
+            "nome": "Análise de Sobrevivência",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "EST035",
+                "EST231"
+            ]
+        },
+        {
+            "codigo": "ICE148",
+            "nome": "Aprendizado de Máquina Não Supervisionado",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "ICE147"
+            ]
+        },
+        {
+            "codigo": "OPT7",
+            "nome": "Optativas",
+            "ch": 60,
+            "creditos": 4,
+            "pre": []
+        }
+    ],
+    "8": [
+        {
+            "codigo": "ICE149",
+            "nome": "Monografia I",
+            "ch": 60,
+            "creditos": 4,
+            "pre": []
+        }
+    ],
+    "9": [
+        {
+            "codigo": "ICE150",
+            "nome": "Monografia II",
+            "ch": 60,
+            "creditos": 4,
+            "pre": [
+                "ICE149"
+            ]
+        },
+        {
+            "codigo": "NG9",
+            "nome": "Núcleo Geral",
+            "ch": 60,
+            "creditos": 4,
+            "pre": []
+        },
+        {
+            "codigo": "OPT9",
+            "nome": "Optativas",
+            "ch": 270,
+            "creditos": 18,
+            "pre": []
+        }
+    ]
+}

@@ -1,0 +1,41 @@
+            <section id="pagina-datalab" class="page-section container-fluid">
+                <h2 class="mb-4"><i class="bi bi-calculator"></i> Data Lab</h2>
+                <p class="lead">Espaço para brincar com estatística e probabilidade</p>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5><i class="bi bi-bar-chart"></i> Calculadora de Média</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>Digite uma lista de números separados por vírgula:</p>
+                                <input type="text" id="input-numeros" class="form-control mb-3" placeholder="10, 20, 30, 40, 50">
+                                <button class="btn btn-primary" onclick="calcularMedia()">
+                                    <i class="bi bi-calculator"></i> Calcular Média
+                                </button>
+                                <div id="resultado-media" class="mt-3"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5><i class="bi bi-graph-up"></i> Estatísticas Descritivas</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>Use a mesma lista de números para calcular:</p>
+                                <button class="btn btn-secondary mb-2 w-100" onclick="calcularEstatisticas()">
+                                    <i class="bi bi-calculator"></i> Calcular Tudo
+                                </button>
+                                <div id="resultado-estatisticas" class="mt-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-info mt-4">
+                    <i class="bi bi-lightbulb"></i> <strong>Futuro:</strong> Este espaço será expandido para incluir visualizações interativas, testes de hipótese, análise de correlação e mais ferramentas estatísticas.
+                </div>
+            </section>

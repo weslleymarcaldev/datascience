@@ -1,0 +1,1119 @@
+/* ds\assets\styles.css */
+:root {
+    --bg-dark: #0b1220;
+    --bg-card: #1a2332;
+    --bg-sidebar: #151e2b;
+    --border-color: #2a3a4f;
+    --text-primary: #e8eaed;
+    --text-secondary: #9aa5b1;
+    --accent-primary: #4a90e2;
+    --accent-success: #50c878;
+    --accent-warning: #ffb84d;
+    --accent-danger: #ff6b6b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.sidebar {
+    min-width: 260px;
+    max-width: 260px;
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border-color);
+    transition: all 0.3s;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-header h3 {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.sidebar ul.components {
+    padding: 20px 0;
+}
+
+.sidebar ul li {
+    margin: 5px 0;
+}
+
+.sidebar ul li a {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    display: block;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.sidebar ul li a:hover {
+    color: var(--text-primary);
+    background: rgba(74, 144, 226, 0.1);
+    border-left-color: var(--accent-primary);
+}
+
+.sidebar ul li a i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar-link.active {
+    background-color: rgba(0, 123, 255, .15);
+    /* leve azul translúcido */
+    color: #0d6efd !important;
+    /* azul bootstrap */
+    border-left: 3px solid #0d6efd;
+    padding-left: 1.5rem;
+    /* compensa a borda */
+}
+
+/* sidebar wrapper base */
+.app-wrapper {
+    min-height: 100vh;
+    /* ocupa tela inteira */
+    background-color: #0b1220;
+    /* seu fundo dark */
+}
+
+/* sidebar estilo base */
+.sidebar-area {
+    width: 240px;
+    min-width: 240px;
+    background-color: #151e2b;
+    /* mesmo tom que você usa de sidebar */
+    border-right: 1px solid #2a3a4f;
+    transition: all 0.2s ease;
+}
+
+/* conteúdo */
+#conteudo {
+    min-width: 0;
+    background-color: #0b1220;
+    /* manter dark */
+    color: #e8eaed;
+}
+
+/* estado COLAPSADO */
+.app-wrapper.is-collapsed .sidebar-area {
+    margin-left: -240px;
+    /* empurra a sidebar pra fora */
+}
+
+.app-wrapper.is-collapsed #conteudo {
+    /* se quiser pode deixar full width sem margin */
+}
+
+/* responsividade extra:
+       em telas menores a sidebar já começa escondida se você quiser */
+@media (max-width: 768px) {
+    .sidebar-area {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 999;
+        /* por cima do conteúdo */
+    }
+
+    /* no mobile, quando "colapsado", some totalmente */
+    .app-wrapper.is-collapsed .sidebar-area {
+        transform: translateX(-100%);
+        margin-left: 0;
+    }
+
+    /* se a sidebar estiver aberta no mobile, podemos fazer um overlay futuramente
+           (não fiz overlay agora pra não complicar o JS)
+        */
+}
+
+.page-section {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    margin-bottom: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+    background: rgba(74, 144, 226, 0.1);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 20px;
+    border-radius: 14px 14px 0 0;
+}
+
+.card-header h5 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+.card-body {
+    padding: 20px;
+    color: var(--text-secondary);
+}
+
+.card-body h6 {
+    color: var(--text-primary);
+    margin-top: 15px;
+}
+
+.card-body ul {
+    margin-left: 20px;
+}
+
+.badge {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.alert {
+    border-radius: 10px;
+    border: none;
+}
+
+.alert-info {
+    background: rgba(74, 144, 226, 0.15);
+    color: #7fb3f5;
+}
+
+.alert-success {
+    background: rgba(80, 200, 120, 0.15);
+    color: #6dd99a;
+}
+
+.alert-warning {
+    background: rgba(255, 184, 77, 0.15);
+    color: #ffcc7f;
+}
+
+.alert-primary {
+    background: rgba(74, 144, 226, 0.2);
+    color: var(--text-primary);
+}
+
+.table-dark {
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+
+.table-dark thead th {
+    background: rgba(74, 144, 226, 0.2);
+    border-color: var(--border-color);
+    padding: 15px;
+}
+
+.table-dark tbody td {
+    border-color: var(--border-color);
+    padding: 12px 15px;
+}
+
+.table-hover tbody tr:hover {
+    background: rgba(74, 144, 226, 0.05);
+}
+
+.form-control,
+.form-select {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background: var(--bg-dark);
+    border-color: var(--accent-primary);
+    color: var(--text-primary);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.form-control::placeholder {
+    color: var(--text-secondary);
+}
+
+.btn {
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 500;
+    border: none;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: var(--accent-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #3a7ac8;
+    transform: translateY(-1px);
+}
+
+.btn-success {
+    background: var(--accent-success);
+    color: white;
+}
+
+.btn-success:hover {
+    background: #40a868;
+}
+
+.btn-warning {
+    background: var(--accent-warning);
+    color: #1a2332;
+}
+
+.btn-warning:hover {
+    background: #e5a43d;
+}
+
+.btn-danger {
+    background: var(--accent-danger);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #e55555;
+}
+
+.btn-secondary {
+    background: #495057;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #3a4047;
+}
+
+.accordion {
+    --bs-accordion-bg: var(--bg-card);
+    --bs-accordion-border-color: var(--border-color);
+    --bs-accordion-btn-bg: rgba(74, 144, 226, 0.1);
+    --bs-accordion-btn-color: var(--text-primary);
+    --bs-accordion-active-bg: rgba(74, 144, 226, 0.15);
+}
+
+.accordion-button {
+    border-radius: 10px !important;
+    margin-bottom: 10px;
+}
+
+.accordion-button:not(.collapsed) {
+    color: var(--text-primary);
+    background-color: rgba(74, 144, 226, 0.15);
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: var(--accent-primary);
+}
+
+.accordion-body {
+    background: var(--bg-card);
+    color: var(--text-secondary);
+}
+
+.roadmap-container {
+    position: relative;
+    padding-left: 50px;
+}
+
+.roadmap-step {
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.roadmap-step::before {
+    content: '';
+    position: absolute;
+    left: -35px;
+    top: 35px;
+    width: 2px;
+    height: 100%;
+    background: var(--border-color);
+}
+
+.roadmap-step:last-child::before {
+    display: none;
+}
+
+.roadmap-number {
+    position: absolute;
+    left: -50px;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: white;
+    box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3);
+}
+
+.roadmap-content {
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+}
+
+.roadmap-content h4 {
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.form-check-input {
+    background-color: var(--bg-dark);
+    border-color: var(--border-color);
+}
+
+.form-check-input:checked {
+    background-color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.form-check-input:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.form-check-label {
+    color: var(--text-secondary);
+}
+
+.list-group-item {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 12px 15px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-group-flush .list-group-item {
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+}
+
+.text-center {
+    text-align: center !important;
+    width: 18% !important;
+}
+
+.btn-sm {
+    padding: 3px 7px;
+    font-size: 0.70rem;
+}
+
+h2 {
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.lead {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        margin-left: -260px;
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .sidebar.active {
+        margin-left: 0;
+    }
+
+    .roadmap-container {
+        padding-left: 30px;
+    }
+
+    .roadmap-number {
+        left: -30px;
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+
+    .roadmap-step::before {
+        left: -15px;
+    }
+}
+
+.input-group {
+    display: flex;
+}
+
+.input-group .form-control {
+    border-radius: 8px 0 0 8px;
+}
+
+.input-group .btn {
+    border-radius: 0 8px 8px 0;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3a4a5f;
+}
+
+.text-muted {
+    color: var(--text-secondary) !important;
+}
+
+.bg-success {
+    background-color: var(--accent-success) !important;
+}
+
+.bg-warning {
+    background-color: var(--accent-warning) !important;
+}
+
+.bg-danger {
+    background-color: var(--accent-danger) !important;
+}
+
+.bg-primary {
+    background-color: var(--accent-primary) !important;
+}
+
+.bg-info {
+    background-color: #5bc0de !important;
+}
+
+.border-info {
+    border-color: #5bc0de !important;
+}
+
+.border-primary {
+    border-color: var(--accent-primary) !important;
+}
+
+.border-warning {
+    border-color: var(--accent-warning) !important;
+}
+
+/* ---------- bloco das anotações ---------- */
+.card-notas .notas-wrapper {
+    background-color: var(--bg-card);
+    /* agora segue o resto do painel */
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    /* mesmo raio da .card */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    /* vamos deixar toolbar colada na borda */
+}
+
+/* dá um "respiro" entre título e blocão */
+#pagina-anotacoes .lead {
+    color: #9daac6;
+    margin-bottom: 1.5rem;
+}
+
+#pagina-anotacoes h2,
+#pagina-anotacoes .lead {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ---------- toolbar do Quill ---------- */
+/* toolbar colada no topo do bloco */
+#notas-toolbar,
+.ql-toolbar.ql-snow {
+    background-color: var(--bg-sidebar) !important;
+    /* aquele cinza-azulado do menu lateral (#151e2b) */
+    border: 0 !important;
+    /* sem borda própria */
+    border-bottom: 1px solid var(--border-color) !important;
+    /* só linha separando do editor */
+    border-radius: 14px 14px 0 0 !important;
+    /* mesmo raio da .card-notas */
+    color: var(--text-primary);
+    padding: 0.6rem 0.75rem !important;
+    line-height: 1.2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+/* grupos da toolbar não ficarem grudados */
+#notas-toolbar .ql-formats {
+    margin-right: .5rem;
+}
+
+/* selects */
+#notas-toolbar .ql-picker-label {
+    background-color: transparent !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 6px;
+    padding-left: 0.5rem;
+    padding-right: 1.5rem;
+    color: var(--text-primary) !important;
+    font-size: .9rem;
+    line-height: 1.2;
+}
+
+#notas-toolbar .ql-picker-options {
+    background-color: var(--bg-dark) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 6px;
+    color: var(--text-primary) !important;
+}
+
+#notas-toolbar .ql-picker-item {
+    color: var(--text-primary) !important;
+}
+
+/* botões B / I / U / alinhamento etc */
+#notas-toolbar button {
+    color: var(--text-primary) !important;
+    border-radius: 6px;
+    border: 1px solid transparent !important;
+    padding: .4rem .5rem;
+}
+
+#notas-toolbar button:hover,
+#notas-toolbar button.ql-active {
+    background-color: rgba(74, 144, 226, 0.15) !important;
+    /* tom do seu azul primário já translúcido */
+    border-color: var(--accent-primary) !important;
+}
+
+/* clarear svg, mas sem ficar neon */
+#notas-toolbar button svg,
+#notas-toolbar .ql-picker-label svg {
+    stroke: var(--text-primary);
+    fill: var(--text-primary);
+    filter: none;
+}
+
+/* select de fonte/tamanho com cara dark */
+#notas-toolbar .ql-picker,
+#notas-toolbar .ql-picker-label,
+#notas-toolbar .ql-picker-options {
+    color: #dbe3ff !important;
+}
+
+#notas-toolbar .ql-picker-label {
+    background-color: transparent !important;
+    border: 1px solid #2a3c58 !important;
+    border-radius: 6px;
+    padding-left: 0.5rem;
+    padding-right: 1.5rem;
+}
+
+#notas-toolbar .ql-picker-options {
+    background-color: #0f1a2d !important;
+    border: 1px solid #2a3c58 !important;
+    border-radius: 6px;
+}
+
+#notas-toolbar .ql-picker-item {
+    color: #dbe3ff !important;
+}
+
+/* botões B/I/U/alinhamento/lista/tabela visíveis no dark */
+#notas-toolbar button {
+    color: #dbe3ff !important;
+}
+
+#notas-toolbar button:hover,
+#notas-toolbar button.ql-active {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border-radius: 4px;
+}
+
+/* ícones dos botões do Quill são <svg>, precisamos clarear eles */
+#notas-toolbar button svg,
+#notas-toolbar .ql-picker-label svg {
+    filter: brightness(1.5);
+    stroke: #dbe3ff;
+    fill: #dbe3ff;
+}
+
+/* ---------- container + editor ---------- */
+#editor-notas,
+.ql-container.ql-snow {
+    background-color: #0f1a2d !important;
+    border: 1px solid #2a3c58 !important;
+    border-top: none !important;
+    /* já temos a borda da toolbar como topo */
+    border-radius: 0 0 10px 10px !important;
+}
+
+/* área editável interna */
+#editor-notas .ql-editor {
+    background-color: #0f1a2d !important;
+    color: #fff !important;
+    min-height: 320px;
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 1rem 1rem 4rem 1rem;
+    /* um pouco mais de respiro em baixo */
+}
+
+/* borda das células de tabela dentro do editor */
+#editor-notas .ql-editor table,
+#editor-notas .ql-editor td,
+#editor-notas .ql-editor th {
+    border: 1px solid #2a3c58 !important;
+}
+
+#editor-notas .ql-editor table {
+    border-collapse: collapse;
+}
+
+/* seleção de texto clara no fundo escuro */
+#editor-notas .ql-editor ::selection {
+    background: rgba(80, 140, 255, 0.4);
+}
+
+/* remove aquele foco azul feio padrão dos selects do quill no dark */
+#notas-toolbar .ql-picker-label:focus,
+#notas-toolbar .ql-picker-label.ql-active,
+#notas-toolbar .ql-picker-item:focus,
+#notas-toolbar .ql-picker-item.ql-selected {
+    outline: none !important;
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* feedback msg abaixo dos botões */
+#notas-feedback {
+    min-height: 1rem;
+}
+
+/* alinhar o bloco dos botões com o card */
+#pagina-anotacoes .d-flex.flex-wrap.gap-2.mt-4 {
+    max-width: 900px;
+    margin: 1.5rem auto 0 auto;
+}
+
+
+/* toolbar cola no topo do bloco, e agora criamos um padding lateral */
+#notas-toolbar {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+/* corpo do editor */
+#editor-notas {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* feedback + botões */
+#pagina-anotacoes .d-flex.flex-wrap.gap-2.mt-4 {
+    max-width: 100%;
+    margin: 1rem auto 0 auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+#notas-feedback {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.ql-editor-dark {
+    background-color: #0f1a2d !important;
+    color: #fff !important;
+}
+
+/* checklist list-style fica feio no dark se não ajustar */
+#editor-notas .ql-editor .ql-ui {
+    color: var(--text-primary);
+}
+
+/* bloco de código */
+#editor-notas .ql-editor pre.ql-code-block {
+    background-color: #0f1a2d;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: .75rem 1rem;
+    font-family: Consolas, 'Courier New', monospace;
+    font-size: .9rem;
+    line-height: 1.4;
+    color: #8ecbff;
+    /* leve tom ciano/azul pra parecer código */
+    overflow-x: auto;
+}
+
+/* inline code */
+#editor-notas .ql-editor code {
+    background-color: rgba(74, 144, 226, 0.15);
+    border: 1px solid rgba(74, 144, 226, 0.4);
+    border-radius: 4px;
+    padding: 0 .3rem;
+    font-family: Consolas, 'Courier New', monospace;
+    font-size: .9rem;
+    color: #8ecbff;
+}
+
+/* blockquote */
+#editor-notas .ql-editor blockquote {
+    border-left: 3px solid var(--accent-primary);
+    margin: .5rem 0 .5rem 0;
+    padding: .5rem .75rem;
+    background-color: rgba(74, 144, 226, 0.08);
+    border-radius: 4px;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* linha horizontal (divider) */
+#editor-notas .ql-editor hr {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 1.5rem 0;
+    opacity: .6;
+}
+
+/* lista checklist do Quill (ql-list="check") */
+#editor-notas .ql-editor .ql-indent-1 {
+    padding-left: 1.5rem;
+}
+
+/* ===== Toolbar do editor (versão final) ===== */
+
+/* container da toolbar */
+#notas-toolbar {
+    background-color: var(--bg-sidebar) !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    border-radius: 14px 14px 0 0 !important;
+
+    color: var(--text-primary);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+
+    padding: 0.6rem 1rem !important;
+    line-height: 1.2;
+
+    /* separadores verticais bonitinhos entre grupos */
+}
+
+#notas-toolbar .ql-formats {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .4rem;
+
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    padding-right: .5rem;
+    margin-right: .5rem;
+}
+
+#notas-toolbar .ql-formats:last-child {
+    border-right: none;
+    margin-right: 0;
+    padding-right: 0;
+}
+
+/* botões padrão (bold, italic, listas, alinhamento etc.) */
+#notas-toolbar button {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 6px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text-primary) !important;
+
+    font-size: 0;
+    /* esconde texto interno como 'B', 'I' do fallback */
+    line-height: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: background .15s, border-color .15s;
+}
+
+#notas-toolbar button:hover,
+#notas-toolbar button.ql-active {
+    background-color: rgba(74, 144, 226, 0.15) !important;
+    border-color: var(--accent-primary) !important;
+    color: var(--accent-primary) !important;
+}
+
+/* aumenta os ícones SVG e deixa visíveis no dark */
+#notas-toolbar button svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--text-primary);
+    fill: var(--text-primary);
+    stroke-width: 1.8;
+    opacity: .9;
+}
+
+#notas-toolbar button:hover svg,
+#notas-toolbar button.ql-active svg {
+    stroke: var(--accent-primary);
+    fill: var(--accent-primary);
+    opacity: 1;
+}
+
+/* selects (fonte, tamanho, header, cor, background) */
+#notas-toolbar select.ql-font,
+#notas-toolbar select.ql-size,
+#notas-toolbar select.ql-header,
+#notas-toolbar select.ql-color,
+#notas-toolbar select.ql-background {
+    height: 32px;
+    line-height: 32px;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+#notas-toolbar select option {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+}
+
+/* dropdown wrappers do Quill (tipo o rótulo da fonte) */
+#notas-toolbar .ql-picker-label {
+    background-color: transparent !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 6px;
+    padding: 6px 10px;
+    color: var(--text-primary) !important;
+    font-size: 0.9rem;
+    line-height: 1.2;
+    min-height: 32px;
+
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
+
+#notas-toolbar .ql-picker-label:hover,
+#notas-toolbar .ql-picker-label.ql-active,
+#notas-toolbar .ql-picker-item:hover,
+#notas-toolbar .ql-picker-item.ql-selected {
+    background-color: rgba(74, 144, 226, 0.15) !important;
+    border-color: var(--accent-primary) !important;
+    color: var(--accent-primary) !important;
+}
+
+/* conteúdo do dropdown (lista de opções) */
+#notas-toolbar .ql-picker-options {
+    background-color: var(--bg-dark) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 6px;
+    color: var(--text-primary) !important;
+    padding: .4rem 0;
+}
+
+/* ícones dentro dos labels dos pickers */
+#notas-toolbar .ql-picker-label svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--text-primary);
+    fill: var(--text-primary);
+    stroke-width: 1.6;
+    opacity: .9;
+}
+
+/* "limpar formatação", "blockquote", etc que usam caracteres inline ao invés de svg */
+#notas-toolbar button:not(:has(svg)) {
+    font-size: 14px;
+    /* deixa visível aqueles botões que são só texto, tipo _ ou " ” */
+    line-height: 1;
+    color: var(--text-primary) !important;
+}
+
+#notas-toolbar button:not(:has(svg)):hover {
+    color: var(--accent-primary) !important;
+}
+
+/* altura mínima da barra inteira */
+.ql-toolbar.ql-snow {
+    min-height: 50px !important;
+    background: transparent !important;
+    /* já estamos estilizando #notas-toolbar */
+    border: 0 !important;
+    padding: 0 !important;
+}
+
+.ql-editor.ql-blank::before {
+    color: #9daac6 !important;
+    content: attr(data-placeholder) !important;
+    font-style: italic !important;
+    left: 33px !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    right: 15px !important;
+}
+
+/* linha vertical entre blocos de ação */
+.notas-divider {
+    width: 1px;
+    height: 28px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 1px;
+}
+
+/* botões menores de export/import mantendo estética */
+.btn-outline-light,
+.btn-outline-info {
+    background-color: transparent !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
+
+.btn-outline-info {
+    border-color: var(--accent-primary) !important;
+    color: var(--accent-primary) !important;
+}
+
+.btn-outline-light:hover,
+.btn-outline-info:hover {
+    background-color: rgba(74, 144, 226, 0.15) !important;
+    border-color: var(--accent-primary) !important;
+    color: var(--accent-primary) !important;
+}
+
+/* ícone alinhadinho nesses botões */
+.btn-outline-light i,
+.btn-outline-info i {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+/* estado padrão dos botões rápidos no topo */
+.action-open {
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 0.9rem;
+    line-height: 1.2;
+    font-weight: 500;
+    background: transparent;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
+
+/* cada um tem cor própria no texto já (verde, amarelo, azul etc.) então a base é transparente */
+
+/* estado ativo só pro botão realmente selecionado */
+.action-open-active {
+    border-color: var(--accent-primary);
+    /* azul */
+    background-color: rgba(74, 144, 226, 0.08);
+    /* leve highlight */
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+}
+
+/* ícones dentro dos atalhos */
+.action-open i {
+    font-size: 1rem;
+    line-height: 1;
+}
