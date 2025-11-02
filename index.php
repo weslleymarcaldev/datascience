@@ -34,11 +34,10 @@
                     </div>
 
                     <!-- botão fechar lateral em telas menores -->
-                    <button class="btn btn-sm btn-outline-light d-lg-none"
+                    <button title="Fechar painel lateral" type="button" class="btn btn-sm btn-outline-light d-lg-none"
                         id="btn-close-sidebar"
                         style="line-height:1;padding:.25rem .4rem;"
-                        aria-label="Fechar painel lateral"
-                        title="Fechar painel lateral">
+                        aria-label="Fechar painel lateral">
                         <i class="bi bi-x-lg" aria-hidden="true"></i>
                     </button>
 
@@ -51,7 +50,7 @@
                 <!-- TRILHA DE ESTUDO -->
                 <div class="accordion-item bg-black border-0">
                     <h2 class="accordion-header" id="group-estudo-heading">
-                        <button class="accordion-button collapsed bg-black text-light border-0 px-0"
+                        <button title="Trilha de Estudo" class="accordion-button collapsed bg-black text-light border-0 px-0"
                             type="button"
                             data-bs-toggle="collapse"
                             data-bs-target="#group-estudo"
@@ -91,7 +90,7 @@
                 <!-- PRÁTICA E PORTFÓLIO -->
                 <div class="accordion-item bg-black border-0">
                     <h2 class="accordion-header" id="group-portfolio-heading">
-                        <button class="accordion-button collapsed bg-black text-light border-0 px-0"
+                        <button title="Prática &amp; Portfólio" class="accordion-button collapsed bg-black text-light border-0 px-0"
                             type="button"
                             data-bs-toggle="collapse"
                             data-bs-target="#group-portfolio"
@@ -124,28 +123,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- EXECUÇÃO DIÁRIA -->
-                <!-- <div class="accordion-item bg-black border-0"> 
-                    <h2 class="accordion-header" id="group-diario-heading"> 
-                        <button class="accordion-button collapsed bg-black text-light border-0 px-0" type="button" data-bs-toggle="collapse" data-bs-target="#group-diario" aria-expanded="false" aria-controls="group-diario"> 
-                            <i class="bi bi-rocket-takeoff me-2 text-success"></i> Execução Diária </button> 
-                        </h2> 
-                        <div id="group-diario" class="accordion-collapse collapse" aria-labelledby="group-diario-heading" data-bs-parent="#sidebar-accordion"> 
-                            <div class="accordion-body py-2 px-0"> 
-                                <a href="#" class="sidebar-link d-block py-2 text-decoration-none text-light ps-4" data-section="checklist"> 
-                                    <i class="bi bi-check-square me-2"></i> Checklist </a> 
-                                <a href="#" class="sidebar-link d-block py-2 text-decoration-none text-light ps-4" data-section="todo"> 
-                                    <i class="bi bi-kanban me-2"></i> To-do </a> 
-                                <a href="#" class="sidebar-link d-block py-2 text-decoration-none text-light ps-4" data-section="anotacoes"> 
-                                    <i class="bi bi-pencil-square me-2"></i> Anotações </a> 
-                                <a href="#" class="sidebar-link d-block py-2 text-decoration-none text-light ps-4" data-section="datalab"> 
-                                    <i class="bi bi-calculator me-2"></i> Data Lab </a> 
-                                </div> 
-                            </div> 
-                        </div> 
-                    </div> -->
-
             </div>
         </nav>
 
@@ -154,11 +131,11 @@
 
             <!-- HEADER SUPERIOR COM BOTÃO HAMBURGUER -->
             <div class="d-flex align-items-center justify-content-between flex-wrap mb-4 border-bottom border-secondary pb-2">
-                <button class="btn btn-outline-light btn-sm" id="btn-toggle-sidebar" style="line-height:1;">
+                <button title="Toggle Sidebar" type="button" class="btn btn-outline-light btn-sm" id="btn-toggle-sidebar" style="line-height:1;">
                     <i class="bi bi-list"></i>
                 </button>
 
-                <div class="small text-muted ms-auto ps-3 d-none d-md-block text-end">
+                <div title="Modo Estudo Ativo" class="small text-muted ms-auto ps-3 d-none d-md-block text-end">
                     <div><i class="bi bi-person-workspace"></i> Modo Estudo Ativo</div>
                     <div class="text-secondary" id="status-progresso-dia">
                         Foco: Probabilidade
@@ -168,7 +145,7 @@
 
             <!-- AÇÕES RÁPIDAS (seus botões de topo) -->
             <div class="d-flex flex-wrap gap-3 align-items-center mb-4">
-                <button class="action-open position-relative bg-transparent border-0 p-0 text-start" data-target="checklist">
+                <button title="Checklist" type="button" class="action-open position-relative bg-transparent border-0 p-0 text-start" data-target="checklist">
                     <i class="bi bi-check-square text-success"></i>
                     <span class="text-success">Checklist</span>
 
@@ -179,17 +156,17 @@
                     </span>
                 </button>
 
-                <button class="action-open bg-transparent border-0 p-0 text-start" data-target="todo">
+                <button title="To-do" type="button" class="action-open bg-transparent border-0 p-0 text-start" data-target="todo">
                     <i class="bi bi-kanban text-warning"></i>
                     <span class="text-warning">To-do</span>
                 </button>
 
-                <button class="action-open bg-transparent border-0 p-0 text-start" data-target="anotacoes">
+                <button title="Anotar" type="button" class="action-open bg-transparent border-0 p-0 text-start" data-target="anotacoes">
                     <i class="bi bi-pencil-square text-primary"></i>
                     <span class="text-primary">Anotar</span>
                 </button>
 
-                <button class="action-open bg-transparent border-0 p-0 text-start" data-target="datalab">
+                <button title="Data Lab" type="button" class="action-open bg-transparent border-0 p-0 text-start" data-target="datalab">
                     <i class="bi bi-calculator text-primary"></i>
                     <span class="text-primary">Data Lab</span>
                 </button>
@@ -206,14 +183,16 @@
     <!-- Bootstrap Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.min.js"></script>
-    <script src="js/notas.js"></script>
 
     <!-- Seus módulos -->
+    <script src="js/notas.js"></script>
     <script src="js/state.js"></script>
     <script src="js/data.js"></script>
+    <script src="js/todo.js"></script>
+    <script src="js/check.js"></script>
     <script src="js/ui.js"></script>
-    <!-- Orquestrador final -->
     <script src="js/app.js"></script>
+
     <script>
         (function() {
             const wrapper = document.querySelector('.app-wrapper');
@@ -245,7 +224,6 @@
             }
         })();
     </script>
-
 </body>
 
 </html>

@@ -25,6 +25,14 @@ body {
     line-height: 1.6;
 }
 
+html,
+body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    /* evita barra horizontal da página */
+}
+
 .wrapper {
     display: flex;
     width: 100%;
@@ -97,27 +105,48 @@ body {
 /* sidebar wrapper base */
 .app-wrapper {
     min-height: 100vh;
-    /* ocupa tela inteira */
     background-color: #0b1220;
-    /* seu fundo dark */
+    display: flex;
 }
 
 /* sidebar estilo base */
 .sidebar-area {
     width: 240px;
-    min-width: 240px;
     background-color: #151e2b;
-    /* mesmo tom que você usa de sidebar */
     border-right: 1px solid #2a3a4f;
     transition: all 0.2s ease;
+    flex: 0 0 240px;
+    max-width: 240px;
+    height: 100dvh;
+    overflow-y: auto;
+    position: sticky;
+    top: 0;
 }
 
 /* conteúdo */
 #conteudo {
     min-width: 0;
     background-color: #0b1220;
-    /* manter dark */
     color: #e8eaed;
+}
+
+#content {
+    /* coluna da direita (conteúdo) */
+    flex: 1 1 auto;
+    min-width: 0;
+    /* *** permite encolher e evita “estouro” *** */
+    overflow: hidden;
+    /* nada vaza lateralmente */
+    background-color: #0b1220;
+    /* mantém seu tema */
+}
+
+/* O container que recebe as sections */
+#page-container {
+    min-width: 0;
+    /* evita overflow por conteúdo longo */
+    overflow: hidden;
+    /* pai “corta” o filho */
 }
 
 /* estado COLAPSADO */
@@ -169,25 +198,25 @@ body {
     }
 }
 
-.card {
+/* .card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 14px;
     margin-bottom: 20px;
     transition: transform 0.2s, box-shadow 0.2s;
-}
+} */
 
 .card:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.card-header {
+/* .card-header {
     background: rgba(74, 144, 226, 0.1);
     border-bottom: 1px solid var(--border-color);
     padding: 15px 20px;
     border-radius: 14px 14px 0 0;
-}
+} */
 
 .card-header h5 {
     margin: 0;
@@ -196,8 +225,9 @@ body {
 }
 
 .card-body {
-    padding: 20px;
+    padding: 8px 1px;
     color: var(--text-secondary);
+    scrollbar-gutter: stable;
 }
 
 .card-body h6 {
@@ -206,7 +236,20 @@ body {
 }
 
 .card-body ul {
-    margin-left: 20px;
+    margin-left: 0px;
+}
+
+/* Evita “salto” do sticky ao rolar dentro do card */
+.card .card-header {
+    backdrop-filter: blur(2px);
+}
+
+/* Espaço entre list items dentro do body (se precisar) */
+#checklist-programacao .check-item,
+#checklist-datascience .check-item,
+#checklist-matematica .check-item,
+#checklist-ml .check-item {
+    margin-bottom: .5rem;
 }
 
 .badge {
@@ -336,6 +379,60 @@ body {
     background: #3a4047;
 }
 
+/* ---- Botões de ação padronizados (quadradinhos, alinhados) ---- */
+.btn-icon {
+    --bs-btn-padding-y: .25rem;
+    --bs-btn-padding-x: .5rem;
+    --bs-btn-font-size: .875rem;
+    width: 2rem;
+    height: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Linha de item: checkbox | texto (expande) | ações */
+.check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: .5rem;
+    padding: .5rem 0;
+}
+
+.check-item+.check-item {
+    border-top: 1px solid var(--bs-border-color-translucent);
+}
+
+.check-item .form-check-input {
+    margin-top: .25rem;
+}
+
+.check-item .content {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.check-item .actions {
+    opacity: .7;
+    transition: opacity .15s;
+    white-space: nowrap;
+}
+
+.check-item:hover .actions {
+    opacity: 1;
+}
+
+/* Header fixo com leve blur */
+.card .card-header {
+    backdrop-filter: blur(2px);
+}
+
+/* Body rolável dentro do card */
+.card.h-100 .card-body {
+    overflow: auto;
+    scrollbar-gutter: stable;
+}
+
 .accordion {
     --bs-accordion-bg: var(--bg-card);
     --bs-accordion-border-color: var(--border-color);
@@ -436,7 +533,7 @@ body {
     color: var(--text-secondary);
 }
 
-.list-group-item {
+/* .list-group-item {
     background: var(--bg-dark);
     border: 1px solid var(--border-color);
     color: var(--text-primary);
@@ -446,7 +543,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+} */
 
 .list-group-flush .list-group-item {
     border-left: 0;
@@ -454,10 +551,10 @@ body {
     border-radius: 0;
 }
 
-.text-center {
+/* .text-center {
     text-align: center !important;
     width: 18% !important;
-}
+} */
 
 .btn-sm {
     padding: 3px 7px;
@@ -544,7 +641,35 @@ textarea.form-control {
     color: var(--text-secondary) !important;
 }
 
-.bg-success {
+/* Utilitários escopados para uso onde você quiser */
+.cdd-bg-success {
+    background-color: var(--accent-success) !important;
+}
+
+.cdd-bg-warning {
+    background-color: var(--accent-warning) !important;
+    color: #1a2332 !important;
+}
+
+.cdd-bg-danger {
+    background-color: var(--accent-danger) !important;
+}
+
+.cdd-bg-primary {
+    background-color: var(--accent-primary) !important;
+}
+
+.cdd-text-center {
+    text-align: center !important;
+}
+
+.cdd-fixed-col {
+    width: 18%;
+}
+
+/* use onde você realmente precisa dessa largura */
+
+/* .bg-success {
     background-color: var(--accent-success) !important;
 }
 
@@ -558,7 +683,7 @@ textarea.form-control {
 
 .bg-primary {
     background-color: var(--accent-primary) !important;
-}
+} */
 
 .bg-info {
     background-color: #5bc0de !important;
@@ -699,25 +824,6 @@ textarea.form-control {
     color: #dbe3ff !important;
 }
 
-/* botões B/I/U/alinhamento/lista/tabela visíveis no dark */
-#notas-toolbar button {
-    color: #dbe3ff !important;
-}
-
-#notas-toolbar button:hover,
-#notas-toolbar button.ql-active {
-    background-color: rgba(255, 255, 255, 0.08) !important;
-    border-radius: 4px;
-}
-
-/* ícones dos botões do Quill são <svg>, precisamos clarear eles */
-#notas-toolbar button svg,
-#notas-toolbar .ql-picker-label svg {
-    filter: brightness(1.5);
-    stroke: #dbe3ff;
-    fill: #dbe3ff;
-}
-
 /* ---------- container + editor ---------- */
 #editor-notas,
 .ql-container.ql-snow {
@@ -753,6 +859,15 @@ textarea.form-control {
 /* seleção de texto clara no fundo escuro */
 #editor-notas .ql-editor ::selection {
     background: rgba(80, 140, 255, 0.4);
+}
+
+#editor-notas .ql-editor a {
+    color: var(--accent-primary);
+    text-decoration: underline;
+}
+
+#editor-notas .ql-editor a:hover {
+    opacity: .9;
 }
 
 /* remove aquele foco azul feio padrão dos selects do quill no dark */
@@ -864,179 +979,6 @@ textarea.form-control {
     padding-left: 1.5rem;
 }
 
-/* ===== Toolbar do editor (versão final) ===== */
-
-/* container da toolbar */
-#notas-toolbar {
-    background-color: var(--bg-sidebar) !important;
-    border: 0 !important;
-    border-bottom: 1px solid var(--border-color) !important;
-    border-radius: 14px 14px 0 0 !important;
-
-    color: var(--text-primary);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem;
-
-    padding: 0.6rem 1rem !important;
-    line-height: 1.2;
-
-    /* separadores verticais bonitinhos entre grupos */
-}
-
-#notas-toolbar .ql-formats {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: .4rem;
-
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
-    padding-right: .5rem;
-    margin-right: .5rem;
-}
-
-#notas-toolbar .ql-formats:last-child {
-    border-right: none;
-    margin-right: 0;
-    padding-right: 0;
-}
-
-/* botões padrão (bold, italic, listas, alinhamento etc.) */
-#notas-toolbar button {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-    min-height: 32px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 6px;
-    border: 1px solid transparent;
-    background: transparent;
-    color: var(--text-primary) !important;
-
-    font-size: 0;
-    /* esconde texto interno como 'B', 'I' do fallback */
-    line-height: 0;
-    padding: 0;
-    cursor: pointer;
-    transition: background .15s, border-color .15s;
-}
-
-#notas-toolbar button:hover,
-#notas-toolbar button.ql-active {
-    background-color: rgba(74, 144, 226, 0.15) !important;
-    border-color: var(--accent-primary) !important;
-    color: var(--accent-primary) !important;
-}
-
-/* aumenta os ícones SVG e deixa visíveis no dark */
-#notas-toolbar button svg {
-    width: 18px;
-    height: 18px;
-    stroke: var(--text-primary);
-    fill: var(--text-primary);
-    stroke-width: 1.8;
-    opacity: .9;
-}
-
-#notas-toolbar button:hover svg,
-#notas-toolbar button.ql-active svg {
-    stroke: var(--accent-primary);
-    fill: var(--accent-primary);
-    opacity: 1;
-}
-
-/* selects (fonte, tamanho, header, cor, background) */
-#notas-toolbar select.ql-font,
-#notas-toolbar select.ql-size,
-#notas-toolbar select.ql-header,
-#notas-toolbar select.ql-color,
-#notas-toolbar select.ql-background {
-    height: 32px;
-    line-height: 32px;
-    background-color: var(--bg-dark);
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    padding: 0 8px;
-    font-size: 0.9rem;
-    cursor: pointer;
-}
-
-#notas-toolbar select option {
-    background-color: var(--bg-dark);
-    color: var(--text-primary);
-}
-
-/* dropdown wrappers do Quill (tipo o rótulo da fonte) */
-#notas-toolbar .ql-picker-label {
-    background-color: transparent !important;
-    border: 1px solid var(--border-color) !important;
-    border-radius: 6px;
-    padding: 6px 10px;
-    color: var(--text-primary) !important;
-    font-size: 0.9rem;
-    line-height: 1.2;
-    min-height: 32px;
-
-    display: flex;
-    align-items: center;
-    gap: .4rem;
-}
-
-#notas-toolbar .ql-picker-label:hover,
-#notas-toolbar .ql-picker-label.ql-active,
-#notas-toolbar .ql-picker-item:hover,
-#notas-toolbar .ql-picker-item.ql-selected {
-    background-color: rgba(74, 144, 226, 0.15) !important;
-    border-color: var(--accent-primary) !important;
-    color: var(--accent-primary) !important;
-}
-
-/* conteúdo do dropdown (lista de opções) */
-#notas-toolbar .ql-picker-options {
-    background-color: var(--bg-dark) !important;
-    border: 1px solid var(--border-color) !important;
-    border-radius: 6px;
-    color: var(--text-primary) !important;
-    padding: .4rem 0;
-}
-
-/* ícones dentro dos labels dos pickers */
-#notas-toolbar .ql-picker-label svg {
-    width: 16px;
-    height: 16px;
-    stroke: var(--text-primary);
-    fill: var(--text-primary);
-    stroke-width: 1.6;
-    opacity: .9;
-}
-
-/* "limpar formatação", "blockquote", etc que usam caracteres inline ao invés de svg */
-#notas-toolbar button:not(:has(svg)) {
-    font-size: 14px;
-    /* deixa visível aqueles botões que são só texto, tipo _ ou " ” */
-    line-height: 1;
-    color: var(--text-primary) !important;
-}
-
-#notas-toolbar button:not(:has(svg)):hover {
-    color: var(--accent-primary) !important;
-}
-
-/* altura mínima da barra inteira */
-.ql-toolbar.ql-snow {
-    min-height: 50px !important;
-    background: transparent !important;
-    /* já estamos estilizando #notas-toolbar */
-    border: 0 !important;
-    padding: 0 !important;
-}
-
 .ql-editor.ql-blank::before {
     color: #9daac6 !important;
     content: attr(data-placeholder) !important;
@@ -1116,4 +1058,379 @@ textarea.form-control {
 .action-open i {
     font-size: 1rem;
     line-height: 1;
+}
+
+/* ===== KANBAN: layout horizontal (flex, sem quebrar linha) ===== */
+
+/* O board continua com scroll horizontal interno */
+.kanban-board {
+    max-width: 100%;
+    /* nunca maior que o content */
+    overflow-x: auto;
+    /* scroll fica aqui, não no body */
+}
+
+#kanban-columns {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.25rem;
+    overflow-x: auto;
+    /* scroll fica aqui */
+    padding-bottom: .5rem;
+    scroll-snap-type: x proximity;
+}
+
+#kanban-columns>.kanban-col {
+    min-width: 300px;
+    max-width: 600px;
+}
+
+/* Colunas (sem min/max para não brigar com percentuais) */
+#kanban-columns .kanban-col {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    /* base neutra; as classes cols-N definem a largura */
+}
+
+/* Largura por quantidade de colunas */
+#kanban-columns.cols-1 .kanban-col {
+    flex-basis: 100%;
+}
+
+#kanban-columns.cols-2 .kanban-col {
+    flex-basis: 50%;
+}
+
+#kanban-columns.cols-3 .kanban-col {
+    flex-basis: 33.3333%;
+}
+
+#kanban-columns.cols-4 .kanban-col {
+    flex-basis: 25%;
+}
+
+#kanban-columns.cols-5 .kanban-col {
+    flex-basis: 20%;
+}
+
+/* #kanban-columns.cols-6 .kanban-col {
+    flex-basis: 16.6667%;
+} */
+
+/* Mobile: carrossel */
+@media (max-width: 992px) {
+    #kanban-columns .kanban-col {
+        flex-basis: 80%;
+    }
+
+    #kanban-columns.cols-1 .kanban-col {
+        flex-basis: 100%;
+    }
+
+    #kanban-columns.cols-2 .kanban-col {
+        flex-basis: 50%;
+    }
+}
+
+/* ====== Board (To-do & Checklist) ====== */
+.board-grid .card {
+    display: flex;
+    /* evita regra duplicada abaixo */
+    flex-direction: column;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+}
+
+.board-grid .card-header {
+    background: transparent;
+    border-bottom: 1px solid var(--bs-border-color);
+    padding: .75rem 1rem;
+}
+
+/* inputs do header */
+.board-grid .card-header .input-group .form-control {
+    min-width: 180px;
+}
+
+/* Alturas iguais e rolagem suave da lista */
+.board-grid .card .card-body {
+    overflow: auto;
+    scrollbar-gutter: stable;
+}
+
+/* ====== Linha de item (igual a uma task) ====== */
+.task-line {
+    transition: background-color .12s ease;
+}
+
+.task-line:hover {
+    background-color: rgba(255, 255, 255, .03);
+}
+
+.task-line .form-check-input {
+    margin-top: .25rem;
+}
+
+.task-line .btn-group .btn {
+    width: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task-line .btn-group {
+    opacity: .75;
+    transition: opacity .15s ease;
+}
+
+.task-line:hover .btn-group {
+    opacity: 1;
+}
+
+/* Dropzone da coluna */
+.todo-coluna {
+    background: rgba(255, 255, 255, .02);
+    border: 1px dashed transparent;
+    border-radius: 12px;
+    padding: .2rem;
+    transition: border-color .2s, background .2s;
+}
+
+.todo-coluna.drag-over {
+    border-color: rgba(56, 189, 248, .5);
+    /* cyan-400 */
+    background: rgba(56, 189, 248, .07);
+}
+
+/* Scrollbar discreta (webkit) */
+.todo-coluna::-webkit-scrollbar,
+#taskModal .modal-body::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+
+.todo-coluna::-webkit-scrollbar-thumb,
+#taskModal .modal-body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, .14);
+    border-radius: 8px;
+}
+
+/* Item/card */
+.todo-item {
+    background: linear-gradient(180deg, rgba(255, 255, 255, .03), rgba(255, 255, 255, .01));
+    border: 1px solid rgba(255, 255, 255, .06);
+    border-radius: 12px;
+    padding: .5rem;
+    cursor: grab;
+    transition: transform .1s, border-color .2s, background .2s;
+}
+
+.todo-item:hover {
+    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, .14);
+}
+
+.todo-item:active {
+    cursor: grabbing;
+}
+
+/* Badges e progress */
+.todo-item .badge {
+    opacity: .95;
+}
+
+.todo-item .progress {
+    height: 4px;
+    background: rgba(255, 255, 255, .12);
+}
+
+#col-icon-grid .selected,
+#col-theme-grid .selected {
+    outline: 2px solid #60a5fa;
+}
+
+.theme-btn.selected {
+    outline: 2px solid rgba(255, 255, 255, .25);
+    box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25);
+    /* halo */
+}
+
+/* Inputs "nova tarefa" */
+.input-group .form-control.bg-black {
+    background: #0b1220 !important;
+    border-color: #263041 !important;
+}
+
+.input-group .btn {
+    border-radius: 10px !important;
+}
+
+/* Modal: mais legível */
+#taskModal .modal-content {
+    background: #0b1220;
+    border-color: #263041;
+    border-radius: 16px;
+}
+
+#taskModal .form-control,
+#taskModal .form-select {
+    border-color: #263041;
+}
+
+#taskModal .form-control:focus,
+#taskModal .form-select:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 .2rem rgba(96, 165, 250, .15);
+}
+
+/* Acessibilidade: foco visível */
+:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+/* Respeita prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ===== Checklist ≅ To-do: equalizer ===== */
+
+/* Fundo coerente no tema dark */
+.bg-secondary-subtle {
+    background-color: var(--bg-card) !important;
+}
+
+/* Borda/sombra dos boards (To-do & Checklist) */
+.board-card {
+    border-color: #263041 !important;
+    border-radius: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+}
+
+/* Header com respiro */
+.board-card .card-header {
+    background: transparent;
+    border-bottom: 1px solid var(--bs-border-color);
+    padding: .75rem 1rem;
+}
+
+/* Body com padding mais generoso (override do global) */
+.board-card .card-body {
+    padding: 1rem !important;
+    overflow: auto;
+    scrollbar-gutter: stable;
+}
+
+/* Inputs do header (mesma pegada do To-do) */
+.board-card .card-header .input-group .form-control {
+    min-width: 180px;
+    background: #0b1220;
+    border-color: #263041;
+}
+
+/* Linha de item no Checklist */
+.board-card .check-item {
+    transition: background-color .12s ease;
+}
+
+.board-card .check-item:hover {
+    background-color: rgba(255, 255, 255, .03);
+}
+
+.board-card .check-item .actions .btn {
+    width: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board-card .check-item .actions {
+    opacity: .75;
+    transition: opacity .15s ease;
+}
+
+.board-card .check-item:hover .actions {
+    opacity: 1;
+}
+
+/* ===== Cabeçalho dos boards alinhado ===== */
+.board-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: .75rem;
+}
+
+.board-title {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.board-controls .input-group {
+    width: 100%;
+}
+
+/* 100% no mobile */
+@media (min-width:768px) {
+    .board-head .input-group {
+        width: auto;
+    }
+
+    /* auto no desktop */
+}
+
+/* Botão realmente pequeno dentro de input-group-sm */
+.input-group.input-group-sm .btn {
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1;
+}
+
+/* Itens do checklist: layout consistente */
+.checklist-row,
+.check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: .5rem;
+    padding: .5rem 0;
+}
+
+.checklist-row+.checklist-row,
+.check-item+.check-item {
+    border-top: 1px solid var(--bs-border-color-translucent);
+}
+
+/* Botão quadradinho padrão */
+.btn-icon {
+    width: 2rem;
+    height: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+/* Helpers responsivos */
+@media (min-width:768px) {
+    .w-md-auto {
+        width: auto !important;
+    }
+}
+
+@media (min-width:768px) {
+    .max-w-md-320 {
+        max-width: 320px !important;
+    }
 }
