@@ -1,0 +1,209 @@
+<section id="pagina-todo" class="page-section container-fluid">
+    <h2 class="mb-3 text-light d-flex align-items-center gap-2">
+        <i class="bi bi-kanban"></i>
+        <span>To-do</span>
+        <div class="ms-auto"></div>
+        <button title="Adicionar nova coluna" class="btn btn-outline-light btn-sm" id="btn-new-column">
+            <i class="bi bi-plus"></i> Nova coluna
+        </button>
+        <script>
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('#btn-new-column')) {
+                    if (typeof openColumnModal === 'function') { openColumnModal('create'); }
+                }
+            });
+        </script>
+    </h2>
+    <!-- Toolbar de filtros/pesquisa -->
+    <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+        <div class="btn-group btn-group-sm" role="group" aria-label="Filtros de prazo">
+            <button title="Todos" id="filtro-todos" class="btn btn-outline-secondary active">
+                <i class="bi bi-view-stacked"></i> Todos
+            </button>
+            <button title="Hoje" id="filtro-hoje" class="btn btn-outline-secondary">
+                <i class="bi bi-sun"></i> Hoje
+            </button>
+            <button title="Atrasados" id="filtro-atrasados" class="btn btn-outline-secondary">
+                <i class="bi bi-exclamation-triangle"></i> Atrasados
+            </button>
+            <button title="Sem data" id="filtro-semd" class="btn btn-outline-secondary">
+                <i class="bi bi-slash-circle"></i> Sem data
+            </button>
+        </div>
+
+        <div class="ms-auto"></div>
+
+        <div class="input-group input-group-sm search-compact" style="max-width: 320px;">
+            <span class="input-group-text bg-black text-secondary border-secondary">
+                <i class="bi bi-search"></i>
+            </span>
+            <input id="filtro-busca" type="text" class="form-control bg-black text-light border-secondary"
+                placeholder="Buscar por título...">
+        </div>
+    </div>
+
+    <!-- Board dinâmico (as colunas serão renderizadas via JS) -->
+    <div id="kanban-columns" class="kanban-board"></div>
+
+    <!-- Modal Detalhes da Tarefa -->
+    <div class="modal fade" id="taskModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content bg-dark text-light border border-secondary rounded-3">
+
+                <div class="modal-header border-secondary">
+                    <div class="w-100">
+                        <input id="task-title-input"
+                            class="form-control bg-transparent text-light border-0 fs-4 fw-semibold p-0"
+                            placeholder="Título da tarefa" />
+                        <div class="d-flex flex-wrap gap-2 mt-2" id="task-labels-container">
+                            <button title="Etiquetas" class="btn btn-sm btn-outline-secondary" id="btn-edit-labels">
+                                <i class="bi bi-tags"></i> Etiquetas
+                            </button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white ms-3" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row g-4">
+                        <!-- Esquerda -->
+                        <div class="col-lg-8">
+                            <!-- Descrição -->
+                            <section class="mb-4">
+                                <h6 class="text-secondary d-flex align-items-center gap-2">
+                                    <i class="bi bi-card-text"></i><span>Descrição</span>
+                                </h6>
+                                <textarea id="task-desc-input" class="form-control bg-black text-light border-secondary"
+                                    rows="4" placeholder="Adicione uma descrição mais detalhada..."></textarea>
+                            </section>
+
+                            <!-- Checklist -->
+                            <section class="mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="text-secondary d-flex align-items-center gap-2 m-0">
+                                        <i class="bi bi-ui-checks-grid"></i><span>Checklist</span>
+                                        <small class="text-secondary" id="task-check-progress"></small>
+                                    </h6>
+                                    <button title="Adicionar item" class="btn btn-sm btn-outline-secondary"
+                                        id="btn-add-checkitem">
+                                        <i class="bi bi-plus"></i> Item
+                                    </button>
+                                </div>
+                                <ul class="list-group" id="task-checklist"></ul>
+                            </section>
+
+                            <!-- Comentários -->
+                            <section class="mb-4">
+                                <h6 class="text-secondary d-flex align-items-center gap-2">
+                                    <i class="bi bi-chat-dots"></i><span>Comentários</span>
+                                </h6>
+                                <div class="mb-3">
+                                    <textarea id="task-new-comment"
+                                        class="form-control bg-black text-light border-secondary" rows="2"
+                                        placeholder="Escrever um comentário..."></textarea>
+                                    <button title="Comentar" class="btn btn-primary btn-sm mt-2"
+                                        id="btn-add-comment">Comentar</button>
+                                </div>
+                                <div id="task-comments-list" class="d-flex flex-column gap-3"></div>
+                            </section>
+                        </div>
+
+                        <!-- Direita -->
+                        <div class="col-lg-4">
+                            <!-- Datas -->
+                            <section class="mb-4">
+                                <h6 class="text-secondary d-flex align-items-center gap-2">
+                                    <i class="bi bi-calendar-event"></i><span>Datas</span>
+                                </h6>
+                                <label class="form-label text-secondary small mb-1">Data de entrega</label>
+                                <input type="datetime-local" id="task-deadline-input"
+                                    class="form-control bg-black text-light border-secondary mb-2" />
+                                <label class="form-label text-secondary small mb-1">Lembrete</label>
+                                <select title="Lembrete" id="task-reminder-select"
+                                    class="form-select bg-black text-light border-secondary">
+                                    <option value="none">Sem lembrete</option>
+                                    <option value="1h">1 hora antes</option>
+                                    <option value="1d">1 dia antes</option>
+                                </select>
+                                <button class="btn btn-outline-primary btn-sm mt-3 w-100" id="btn-gcal-add">
+                                    <i class="bi bi-calendar-plus"></i> Adicionar no Google Calendar
+                                </button>
+                            </section>
+
+                            <!-- Coluna (preenchida dinamicamente pelo JS) -->
+                            <section class="mb-4">
+                                <h6 class="text-secondary d-flex align-items-center gap-2">
+                                    <i class="bi bi-kanban"></i><span>Lista</span>
+                                </h6>
+                                <select title="Lista" id="task-coluna-select"
+                                    class="form-select bg-black text-light border-secondary"></select>
+                            </section>
+
+                            <!-- Histórico -->
+                            <section class="mb-4">
+                                <h6 class="text-secondary d-flex align-items-center gap-2">
+                                    <i class="bi bi-clock-history"></i><span>Histórico</span>
+                                </h6>
+                                <ul class="list-unstyled small text-secondary" id="task-history"></ul>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer border-secondary justify-content-between">
+                    <button title="Excluir cartão" class="btn btn-outline-danger btn-sm" id="btn-delete-task">
+                        <i class="bi bi-trash"></i> Excluir cartão
+                    </button>
+                    <button title="Salvar cartão" class="btn btn-success" id="btn-save-task">
+                        <i class="bi bi-check-lg"></i> Salvar
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Modal: Editar/Adicionar Coluna -->
+    <div class="modal fade" id="colModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-light border border-secondary rounded-3">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="colModalTitle">Editar coluna</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="colMode">
+                    <input type="hidden" id="colIdOriginal">
+                    <div class="mb-3">
+                        <label class="form-label">ID da coluna (sem espaços)</label>
+                        <input id="colId" class="form-control bg-black text-light border-secondary"
+                            placeholder="ex: revisar">
+                        <div class="form-text text-secondary">Use letras, números e hífen; evite espaços.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nome visível</label>
+                        <input id="colTitle" class="form-control bg-black text-light border-secondary"
+                            placeholder="Revisar">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Ícone</label>
+                        <div id="col-icon-grid" class="d-flex flex-wrap gap-2"></div>
+                        <input type="hidden" id="colIcon" value="bi-kanban">
+                    </div>
+
+                    <div class="mb-1">
+                        <label class="form-label d-block">Tema de cor</label>
+                        <div id="col-theme-grid" class="d-flex flex-wrap gap-2"></div>
+                        <input type="hidden" id="colTheme" value="secondary">
+                    </div>
+
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-success" id="col-save">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

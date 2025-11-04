@@ -1,0 +1,465 @@
+/* ds/assets/css/todo.css */
+
+/* Linha de item (igual a uma task) */
+.task-line {
+    transition: background-color 0.12s ease;
+}
+
+.task-line:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.task-line .form-check-input {
+    margin-top: 0.25rem;
+}
+
+.task-line .btn-group .btn {
+    width: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task-line .btn-group {
+    opacity: 0.75;
+    transition: opacity 0.15s ease;
+}
+
+.task-line:hover .btn-group {
+    opacity: 1;
+}
+
+/* Dropzone da coluna */
+.todo-coluna {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed transparent;
+    border-radius: 12px;
+    padding: 0.2rem;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.todo-coluna.drag-over {
+    border-color: rgba(56, 189, 248, 0.5);
+    background: rgba(56, 189, 248, 0.07);
+}
+
+/* Scrollbar discreta (webkit) */
+.todo-coluna::-webkit-scrollbar,
+#taskModal .modal-body::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+
+.todo-coluna::-webkit-scrollbar-thumb,
+#taskModal .modal-body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+}
+
+/* Item/card */
+.todo-item {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 0.5rem;
+    cursor: grab;
+    transition: transform 0.1s, border-color 0.2s, background 0.2s;
+}
+
+.todo-item:hover {
+    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+.todo-item:active {
+    cursor: grabbing;
+}
+
+/* Badges e progress */
+.todo-item .badge {
+    opacity: 0.95;
+}
+
+.todo-item .progress {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Seleção no grid */
+#col-icon-grid .selected,
+#col-theme-grid .selected {
+    outline: 2px solid #60a5fa;
+}
+
+.theme-btn.selected {
+    outline: 2px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    /* halo */
+}
+
+/* Inputs "nova tarefa" */
+.input-group .form-control.bg-black {
+    background: #0b1220 !important;
+    border-color: #263041 !important;
+}
+
+.input-group .btn {
+    border-radius: 10px !important;
+}
+
+/* Modal: mais legível */
+#taskModal .modal-content {
+    background: #0b1220;
+    border-color: #263041;
+    border-radius: 16px;
+}
+
+#taskModal .form-control,
+#taskModal .form-select {
+    border-color: #263041;
+}
+
+#taskModal .form-control:focus,
+#taskModal .form-select:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 0.2rem rgba(96, 165, 250, 0.15);
+}
+
+/* Acessibilidade: foco visível */
+:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+/* Respeita prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ===== Checklist ≅ To-do: equalizer ===== */
+
+/* Fundo coerente no tema dark */
+.bg-secondary-subtle {
+    background-color: var(--bg-card) !important;
+}
+
+/* Borda/sombra dos boards (To-do & Checklist) */
+.board-card {
+    border-color: #263041 !important;
+    border-radius: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Header com respiro */
+.board-card .card-header {
+    background: transparent;
+    border-bottom: 1px solid var(--bs-border-color);
+    padding: 0.75rem 1rem;
+}
+
+/* Body com padding mais generoso (override do global) */
+.board-card .card-body {
+    padding: 1rem !important;
+    overflow: auto;
+    scrollbar-gutter: stable;
+}
+
+/* Inputs do header (mesma pegada do To-do) */
+.board-card .card-header .input-group .form-control {
+    min-width: 180px;
+    background: #0b1220;
+    border-color: #263041;
+}
+
+/* Linha de item no Checklist */
+.board-card .check-item {
+    transition: background-color 0.12s ease;
+}
+
+.board-card .check-item:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.board-card .check-item .actions .btn {
+    width: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board-card .check-item .actions {
+    opacity: 0.75;
+    transition: opacity 0.15s ease;
+}
+
+.board-card .check-item:hover .actions {
+    opacity: 1;
+}
+
+/* ===== Cabeçalho dos boards alinhado ===== */
+.board-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.board-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.board-controls .input-group {
+    width: 100%;
+}
+
+/* 100% no mobile */
+@media (min-width:768px) {
+    .board-head .input-group {
+        width: auto;
+    }
+}
+
+/* Botão realmente pequeno dentro de input-group-sm */
+.input-group.input-group-sm .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1;
+}
+
+/* Itens do checklist: layout consistente */
+.checklist-row,
+.check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+}
+
+.checklist-row+.checklist-row,
+.check-item+.check-item {
+    border-top: 1px solid var(--bs-border-color-translucent);
+}
+
+/* Botão quadradinho padrão */
+.btn-icon {
+    width: 2rem;
+    height: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+/* Helpers responsivos */
+@media (min-width:768px) {
+    .w-md-auto {
+        width: auto !important;
+    }
+}
+
+@media (min-width:768px) {
+    .max-w-md-320 {
+        max-width: 320px !important;
+    }
+}
+
+.datalab-canvas {
+    width: 100% !important;
+    height: 240px !important;
+    max-height: 240px !important;
+}
+/* ===== KANBAN: layout horizontal (flex, sem quebrar linha) ===== */
+
+/* O board continua com scroll horizontal interno */
+.kanban-board {
+    max-width: 100%;
+    /* nunca maior que o content */
+    overflow-x: auto;
+    /* scroll fica aqui, não no body */
+}
+
+#kanban-columns {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.25rem;
+    overflow-x: auto;
+    /* scroll fica aqui */
+    padding-bottom: .5rem;
+    scroll-snap-type: x proximity;
+}
+
+#kanban-columns>.kanban-col {
+    min-width: 300px;
+    max-width: 600px;
+}
+
+/* Colunas (sem min/max para não brigar com percentuais) */
+#kanban-columns .kanban-col {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    /* base neutra; as classes cols-N definem a largura */
+}
+
+/* Largura por quantidade de colunas */
+#kanban-columns.cols-1 .kanban-col {
+    flex-basis: 100%;
+}
+
+#kanban-columns.cols-2 .kanban-col {
+    flex-basis: 50%;
+}
+
+#kanban-columns.cols-3 .kanban-col {
+    flex-basis: 33.3333%;
+}
+
+#kanban-columns.cols-4 .kanban-col {
+    flex-basis: 25%;
+}
+
+#kanban-columns.cols-5 .kanban-col {
+    flex-basis: 20%;
+}
+
+/* #kanban-columns.cols-6 .kanban-col {
+    flex-basis: 16.6667%;
+} */
+
+/* Mobile: carrossel */
+@media (max-width: 992px) {
+    #kanban-columns .kanban-col {
+        flex-basis: 80%;
+    }
+
+    #kanban-columns.cols-1 .kanban-col {
+        flex-basis: 100%;
+    }
+
+    #kanban-columns.cols-2 .kanban-col {
+        flex-basis: 50%;
+    }
+}
+
+/* ====== Board (To-do & Checklist) ====== */
+.board-grid .card {
+    display: flex;
+    /* evita regra duplicada abaixo */
+    flex-direction: column;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+}
+
+.board-grid .card-header {
+    background: transparent;
+    border-bottom: 1px solid var(--bs-border-color);
+    padding: .75rem 1rem;
+}
+
+/* inputs do header */
+.board-grid .card-header .input-group .form-control {
+    min-width: 180px;
+}
+
+/* Alturas iguais e rolagem suave da lista */
+.board-grid .card .card-body {
+    overflow: auto;
+    scrollbar-gutter: stable;
+}
+
+/* ====== Linha de item (igual a uma task) ====== */
+.task-line {
+    transition: background-color .12s ease;
+}
+
+.task-line:hover {
+    background-color: rgba(255, 255, 255, .03);
+}
+
+.task-line .form-check-input {
+    margin-top: .25rem;
+}
+
+.task-line .btn-group .btn {
+    width: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task-line .btn-group {
+    opacity: .75;
+    transition: opacity .15s ease;
+}
+
+.task-line:hover .btn-group {
+    opacity: 1;
+}
+
+/* Dropzone da coluna */
+.todo-coluna {
+    background: rgba(255, 255, 255, .02);
+    border: 1px dashed transparent;
+    border-radius: 12px;
+    padding: .2rem;
+    transition: border-color .2s, background .2s;
+}
+
+.todo-coluna.drag-over {
+    border-color: rgba(56, 189, 248, .5);
+    /* cyan-400 */
+    background: rgba(56, 189, 248, .07);
+}
+
+/* Scrollbar discreta (webkit) */
+.todo-coluna::-webkit-scrollbar,
+#taskModal .modal-body::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+
+.todo-coluna::-webkit-scrollbar-thumb,
+#taskModal .modal-body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, .14);
+    border-radius: 8px;
+}
+
+/* Item/card */
+.todo-item {
+    background: linear-gradient(180deg, rgba(255, 255, 255, .03), rgba(255, 255, 255, .01));
+    border: 1px solid rgba(255, 255, 255, .06);
+    border-radius: 12px;
+    padding: .5rem;
+    cursor: grab;
+    transition: transform .1s, border-color .2s, background .2s;
+}
+
+.todo-item:hover {
+    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, .14);
+}
+
+.todo-item:active {
+    cursor: grabbing;
+}
+
+/* Badges e progress */
+.todo-item .badge {
+    opacity: .95;
+}
+
+.todo-item .progress {
+    height: 4px;
+    background: rgba(255, 255, 255, .12);
+}

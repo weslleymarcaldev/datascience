@@ -1434,3 +1434,9 @@ textarea.form-control {
         max-width: 320px !important;
     }
 }
+
+.datalab-canvas {
+    width: 100% !important;
+    height: 240px !important;
+    max-height: 240px !important;
+}

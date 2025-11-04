@@ -9,7 +9,7 @@ function inicializarApp() {
     configurarNavegacao();       // sidebar (lateral)
     configurarAtalhosRapidos();  // header (atalhos rápidos)
     inicializarChecklistListeners();
-    inicializarDragAndDropTodo();
+    //inicializarDragAndDropTodo();
 
     // pega a última seção visitada
     let secaoInicial = 'resumo';
@@ -55,7 +55,7 @@ function carregarSecao(secao) {
         console.warn('Não consegui salvar ultimaSecao no localStorage:', err);
     }
 
-    $('#page-container').load(`sections/${secao}.html`, function() {
+    $('#page-container').load(`sections/${secao}.html`, function () {
         // este callback roda DEPOIS que o HTML foi injetado
 
         if (secao === 'projetos') {
@@ -77,8 +77,12 @@ function carregarSecao(secao) {
         }
 
         if (secao === 'todo') {
-            if (typeof inicializarTodoListas === 'function') {
+            if (typeof initTodo === 'function') {
+                initTodo();
+            } else if (typeof inicializarTodoListas === 'function') {
                 inicializarTodoListas();
+            } else {
+                console.warn('Nenhum inicializador de To-do encontrado (initTodo / inicializarTodoListas).');
             }
         }
 
@@ -124,11 +128,11 @@ $(document).on('change', '.checklist-item', function () {
 });
 
 // expor funções globais usadas diretamente no HTML parcial via onclick="..."
-if (typeof adicionarTarefa === 'function')        window.adicionarTarefa        = adicionarTarefa;
-if (typeof removerTarefa === 'function')          window.removerTarefa          = removerTarefa;
-if (typeof salvarNotas === 'function')            window.salvarNotas            = salvarNotas;
-if (typeof carregarNotas === 'function')          window.carregarNotas          = carregarNotas;
-if (typeof limparNotas === 'function')            window.limparNotas            = limparNotas;
-if (typeof calcularMedia === 'function')          window.calcularMedia          = calcularMedia;
-if (typeof calcularEstatisticas === 'function')   window.calcularEstatisticas   = calcularEstatisticas;
-if (typeof preverPreco === 'function')            window.preverPreco            = preverPreco;
+if (typeof adicionarTarefa === 'function') window.adicionarTarefa = adicionarTarefa;
+if (typeof removerTarefa === 'function') window.removerTarefa = removerTarefa;
+if (typeof salvarNotas === 'function') window.salvarNotas = salvarNotas;
+if (typeof carregarNotas === 'function') window.carregarNotas = carregarNotas;
+if (typeof limparNotas === 'function') window.limparNotas = limparNotas;
+if (typeof calcularMedia === 'function') window.calcularMedia = calcularMedia;
+if (typeof calcularEstatisticas === 'function') window.calcularEstatisticas = calcularEstatisticas;
+if (typeof preverPreco === 'function') window.preverPreco = preverPreco;

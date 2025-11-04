@@ -1,3 +1,4 @@
+<!-- ds/index.php -->
 <!DOCTYPE html>
 <html lang="pt-BR" data-bs-theme="dark">
 
@@ -12,7 +13,7 @@
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Estilos custom -->
-    <link href="assets/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.min.css" />
 </head>
 
 <body class="bg-dark text-light">
@@ -185,6 +186,7 @@
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.min.js"></script>
 
     <!-- Seus módulos -->
+    <script src="js/log.js"></script>
     <script src="js/notas.js"></script>
     <script src="js/state.js"></script>
     <script src="js/data.js"></script>
@@ -192,6 +194,7 @@
     <script src="js/check.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/app.js"></script>
+
 
     <script>
         (function() {

@@ -72,6 +72,7 @@ function renderizarChecklistCompleto() {
 }
 
 
+
 // inicializa listeners do checklist (delegação)
 function inicializarChecklistListeners() {
 

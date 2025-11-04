@@ -1,0 +1,129 @@
+<section id="pagina-checklist" class="page-section container-fluid">
+
+    <h2 class="mb-3 text-light d-flex align-items-center gap-2">
+        <i class="bi bi-check-square"></i>
+        <span>Checklist</span>
+    </h2>
+    <!-- GRID: 1 col (xs), 2 (md), 3 (xl), 4 (xxl) -->
+    <div class="row board-grid row-cols-1 row-cols-md-2 row-cols-xl-3 row-cols-xxl-4 g-3">
+
+        <!-- PROGRAMAÇÃO -->
+        <div class="col">
+            <div class="card board-card bg-secondary-subtle h-100">
+                <!-- HEADER -->
+                <div class="card-header bg-secondary bg-opacity-25 border-secondary">
+                    <div class="board-head">
+                        <div class="board-title text-light">
+                            <i class="bi bi-code"></i>
+                            <span>Programação</span>
+                        </div>
+                        <div class="board-controls">
+                            <div class="input-group input-group-sm max-w-md-320 w-100">
+                                <input class="form-control" placeholder="Novo item ex: 'APIs REST'"
+                                    data-new-item-input="programacao">
+                                <button class="btn btn-sm btn-primary" data-add-item="programacao">
+                                    <i class="bi bi-plus-lg"></i>
+                                    <span class="d-none d-sm-inline ms-1"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BODY (alvo do JS) -->
+                <div class="card-body" id="checklist-programacao" data-group="programacao">
+                    <!-- itens vão aqui via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- DATA SCIENCE -->
+        <div class="col">
+            <div class="card board-card bg-secondary-subtle h-100">
+                <!-- HEADER -->
+                <div class="card-header bg-secondary bg-opacity-25 border-secondary">
+                    <div class="board-head">
+                        <div class="board-title text-light">
+                            <i class="bi bi-bar-chart"></i>
+                            <span>Data Science</span>
+                        </div>
+                        <div class="board-controls">
+                            <div class="input-group input-group-sm max-w-md-320 w-100">
+                                <input class="form-control" placeholder="Novo item ex: 'APIs REST'"
+                                    data-new-item-input="datascience">
+                                <button class="btn btn-sm btn-primary" data-add-item="datascience">
+                                    <i class="bi bi-plus-lg"></i>
+                                    <span class="d-none d-sm-inline ms-1"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BODY (alvo do JS) -->
+                <div class="card-body" id="checklist-datascience" data-group="datascience">
+                    <!-- itens vão aqui via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- MATEMÁTICA -->
+        <div class="col">
+            <div class="card board-card bg-secondary-subtle h-100">
+                <!-- HEADER -->
+                <div class="card-header bg-secondary bg-opacity-25 border-secondary">
+                    <div class="board-head">
+                        <div class="board-title text-light">
+                            <i class="bi bi-calculator"></i>
+                            <span>Matemática</span>
+                        </div>
+                        <div class="board-controls">
+                            <div class="input-group input-group-sm max-w-md-320 w-100">
+                                <input class="form-control" placeholder="Novo item ex: 'APIs REST'"
+                                    data-new-item-input="matematica">
+                                <button class="btn btn-sm btn-primary" data-add-item="matematica">
+                                    <i class="bi bi-plus-lg"></i>
+                                    <span class="d-none d-sm-inline ms-1"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BODY (alvo do JS) -->
+                <div class="card-body" id="checklist-matematica" data-group="matematica">
+                    <!-- itens vão aqui via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- MACHINE LEARNING -->
+        <div class="col">
+            <div class="card board-card bg-secondary-subtle h-100">
+                <!-- HEADER -->
+                <div class="card-header bg-secondary bg-opacity-25 border-secondary">
+                    <div class="board-head">
+                        <div class="board-title text-light">
+                            <i class="bi bi-cpu"></i>
+                            <span>Machine Learning</span>
+                        </div>
+                        <div class="board-controls">
+                            <div class="input-group input-group-sm max-w-md-320 w-100">
+                                <input class="form-control" placeholder="Novo item ex: 'Gradient Boosting'"
+                                    data-new-item-input="ml">
+                                <button class="btn btn-sm btn-primary" data-add-item="ml">
+                                    <i class="bi bi-plus-lg"></i>
+                                    <span class="d-none d-sm-inline ms-1"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- BODY (alvo do JS) -->
+                <div class="card-body" id="checklist-ml" data-group="ml">
+                    <!-- itens vão aqui via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

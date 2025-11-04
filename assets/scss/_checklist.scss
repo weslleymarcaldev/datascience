@@ -1,0 +1,172 @@
+/* ds/assets/checklist.css */
+
+/* Espaço entre list items dentro do body (se precisar) */
+#checklist-programacao .check-item,
+#checklist-datascience .check-item,
+#checklist-matematica .check-item,
+#checklist-ml .check-item {
+    margin-bottom: 0.5rem;
+}
+
+/* Linha de item: checkbox | texto (expande) | ações */
+.check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+}
+
+.check-item+.check-item {
+    border-top: 1px solid var(--bs-border-color-translucent);
+}
+
+.check-item .form-check-input {
+    margin-top: 0.25rem;
+}
+
+.check-item .content {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.check-item .actions {
+    opacity: 0.7;
+    transition: opacity 0.15s;
+    white-space: nowrap;
+}
+
+.check-item:hover .actions {
+    opacity: 1;
+}
+
+/* Cards do checklist */
+.board-card {
+    border-color: #263041 !important;
+    border-radius: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Header com respiro */
+.board-card .card-header {
+    background: transparent;
+    border-bottom: 1px solid var(--bs-border-color);
+    padding: 0.75rem 1rem;
+}
+
+/* Body com padding mais generoso (override do global) */
+.board-card .card-body {
+    padding: 1rem !important;
+    overflow: auto;
+    scrollbar-gutter: stable;
+}
+
+/* Inputs do header (mesma pegada do To-do) */
+.board-card .card-header .input-group .form-control {
+    min-width: 180px;
+    background: #0b1220;
+    border-color: #263041;
+}
+
+/* Linha de item no Checklist */
+.board-card .check-item {
+    transition: background-color 0.12s ease;
+}
+
+.board-card .check-item:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.board-card .check-item .actions .btn {
+    width: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board-card .check-item .actions {
+    opacity: 0.75;
+    transition: opacity 0.15s ease;
+}
+
+.board-card .check-item:hover .actions {
+    opacity: 1;
+}
+
+/* Cabeçalho dos boards alinhado */
+.board-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.board-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.board-controls .input-group {
+    width: 100%;
+}
+
+/* 100% no mobile */
+@media (min-width: 768px) {
+    .board-head .input-group {
+        width: auto;
+    }
+}
+
+/* Botão realmente pequeno dentro de input-group-sm */
+.input-group.input-group-sm .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1;
+}
+
+/* Itens do checklist: layout consistente */
+.checklist-row,
+.check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+}
+
+.checklist-row+.checklist-row,
+.check-item+.check-item {
+    border-top: 1px solid var(--bs-border-color-translucent);
+}
+
+/* Botão quadradinho padrão */
+.btn-icon {
+    width: 2rem;
+    height: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+/* Helpers responsivos */
+@media (min-width: 768px) {
+    .w-md-auto {
+        width: auto !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .max-w-md-320 {
+        max-width: 320px !important;
+    }
+}
+
+.datalab-canvas {
+    width: 100% !important;
+    height: 240px !important;
+    max-height: 240px !important;
+}

@@ -1,0 +1,248 @@
+/* ds/assets/grade.css */
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Cards usados em várias áreas (podem estar na grade) */
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-header h5 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+.card-body {
+    padding: 8px 1px;
+    color: var(--text-secondary);
+    scrollbar-gutter: stable;
+}
+
+.card-body h6 {
+    color: var(--text-primary);
+    margin-top: 15px;
+}
+
+.card-body ul {
+    margin-left: 0px;
+}
+
+/* Evita “salto” do sticky ao rolar dentro do card */
+.card .card-header {
+    backdrop-filter: blur(2px);
+}
+
+/* Espaço entre list items dentro do body (se precisar) */
+#checklist-programacao .check-item,
+#checklist-datascience .check-item,
+#checklist-matematica .check-item,
+#checklist-ml .check-item {
+    margin-bottom: 0.5rem;
+}
+
+/* Badges usados nos cards e listas */
+.badge {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+/* Alertas usados em cards e avisos */
+.alert {
+    border-radius: 10px;
+    border: none;
+}
+
+.alert-info {
+    background: rgba(74, 144, 226, 0.15);
+    color: #7fb3f5;
+}
+
+.alert-success {
+    background: rgba(80, 200, 120, 0.15);
+    color: #6dd99a;
+}
+
+.alert-warning {
+    background: rgba(255, 184, 77, 0.15);
+    color: #ffcc7f;
+}
+
+.alert-primary {
+    background: rgba(74, 144, 226, 0.2);
+    color: var(--text-primary);
+}
+
+/* Estilos para tabelas em modo dark */
+.table-dark {
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+
+.table-dark thead th {
+    background: rgba(74, 144, 226, 0.2);
+    border-color: var(--border-color);
+    padding: 15px;
+}
+
+.table-dark tbody td {
+    border-color: var(--border-color);
+    padding: 12px 15px;
+}
+
+.table-hover tbody tr:hover {
+    background: rgba(74, 144, 226, 0.05);
+}
+
+/* Formulários */
+.form-control,
+.form-select {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background: var(--bg-dark);
+    border-color: var(--accent-primary);
+    color: var(--text-primary);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.form-control::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Botões gerais */
+.btn {
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 500;
+    border: none;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: var(--accent-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #3a7ac8;
+    transform: translateY(-1px);
+}
+
+.btn-success {
+    background: var(--accent-success);
+    color: white;
+}
+
+.btn-success:hover {
+    background: #40a868;
+}
+
+.btn-warning {
+    background: var(--accent-warning);
+    color: #1a2332;
+}
+
+.btn-warning:hover {
+    background: #e5a43d;
+}
+
+.btn-danger {
+    background: var(--accent-danger);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #e55555;
+}
+
+.btn-secondary {
+    background: #495057;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #3a4047;
+}
+
+/* Botões de ação padronizados */
+.btn-icon {
+    --bs-btn-padding-y: .25rem;
+    --bs-btn-padding-x: .5rem;
+    --bs-btn-font-size: .875rem;
+    width: 2rem;
+    height: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Helpers escopados para uso onde quiser */
+.cdd-bg-success {
+    background-color: var(--accent-success) !important;
+}
+
+.cdd-bg-warning {
+    background-color: var(--accent-warning) !important;
+    color: #1a2332 !important;
+}
+
+.cdd-bg-danger {
+    background-color: var(--accent-danger) !important;
+}
+
+.cdd-bg-primary {
+    background-color: var(--accent-primary) !important;
+}
+
+.cdd-text-center {
+    text-align: center !important;
+}
+
+.cdd-fixed-col {
+    width: 18%;
+}
+
+/* Responsividade específica da grade e layout */
+@media (max-width: 768px) {
+    .sidebar {
+        margin-left: -260px;
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .sidebar.active {
+        margin-left: 0;
+    }
+
+    .roadmap-container {
+        padding-left: 30px;
+    }
+
+    .roadmap-number {
+        left: -30px;
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+
+    .roadmap-step::before {
+        left: -15px;
+    }
+}

@@ -1,0 +1,345 @@
+/* ds/assets/anotacoes.css */
+
+/* ---------- bloco das anotações ---------- */
+.card-notas .notas-wrapper {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* dá um "respiro" entre título e blocão */
+#pagina-anotacoes .lead {
+    color: #9daac6;
+    margin-bottom: 1.5rem;
+}
+
+#pagina-anotacoes h2,
+#pagina-anotacoes .lead {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ---------- toolbar do Quill ---------- */
+#notas-toolbar,
+.ql-toolbar.ql-snow {
+    background-color: var(--bg-sidebar) !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    border-radius: 14px 14px 0 0 !important;
+    color: var(--text-primary);
+    padding: 0.6rem 0.75rem !important;
+    line-height: 1.2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* grupos da toolbar não ficarem grudados */
+#notas-toolbar .ql-formats {
+    margin-right: 0.5rem;
+}
+
+/* selects */
+#notas-toolbar .ql-picker-label {
+    background-color: transparent !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 6px;
+    padding-left: 0.5rem;
+    padding-right: 1.5rem;
+    color: var(--text-primary) !important;
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
+
+#notas-toolbar .ql-picker-options {
+    background-color: var(--bg-dark) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 6px;
+    color: var(--text-primary) !important;
+}
+
+#notas-toolbar .ql-picker-item {
+    color: var(--text-primary) !important;
+}
+
+/* botões B / I / U / alinhamento etc */
+#notas-toolbar button {
+    color: var(--text-primary) !important;
+    border-radius: 6px;
+    border: 1px solid transparent !important;
+    padding: 0.4rem 0.5rem;
+}
+
+#notas-toolbar button:hover,
+#notas-toolbar button.ql-active {
+    background-color: rgba(74, 144, 226, 0.15) !important;
+    border-color: var(--accent-primary) !important;
+}
+
+/* clarear svg, mas sem ficar neon */
+#notas-toolbar button svg,
+#notas-toolbar .ql-picker-label svg {
+    stroke: var(--text-primary);
+    fill: var(--text-primary);
+    filter: none;
+}
+
+/* select de fonte/tamanho com cara dark */
+#notas-toolbar .ql-picker,
+#notas-toolbar .ql-picker-label,
+#notas-toolbar .ql-picker-options {
+    color: #dbe3ff !important;
+}
+
+#notas-toolbar .ql-picker-label {
+    background-color: transparent !important;
+    border: 1px solid #2a3c58 !important;
+    border-radius: 6px;
+    padding-left: 0.5rem;
+    padding-right: 1.5rem;
+}
+
+#notas-toolbar .ql-picker-options {
+    background-color: #0f1a2d !important;
+    border: 1px solid #2a3c58 !important;
+    border-radius: 6px;
+}
+
+#notas-toolbar .ql-picker-item {
+    color: #dbe3ff !important;
+}
+
+/* ---------- container + editor ---------- */
+#editor-notas,
+.ql-container.ql-snow {
+    background-color: #0f1a2d !important;
+    border: 1px solid #2a3c58 !important;
+    border-top: none !important;
+    border-radius: 0 0 10px 10px !important;
+}
+
+/* área editável interna */
+#editor-notas .ql-editor {
+    background-color: #0f1a2d !important;
+    color: #fff !important;
+    min-height: 320px;
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 1rem 1rem 4rem 1rem;
+}
+
+/* borda das células de tabela dentro do editor */
+#editor-notas .ql-editor table,
+#editor-notas .ql-editor td,
+#editor-notas .ql-editor th {
+    border: 1px solid #2a3c58 !important;
+}
+
+#editor-notas .ql-editor table {
+    border-collapse: collapse;
+}
+
+/* seleção de texto clara no fundo escuro */
+#editor-notas .ql-editor ::selection {
+    background: rgba(80, 140, 255, 0.4);
+}
+
+#editor-notas .ql-editor a {
+    color: var(--accent-primary);
+    text-decoration: underline;
+}
+
+#editor-notas .ql-editor a:hover {
+    opacity: 0.9;
+}
+
+/* remove aquele foco azul feio padrão dos selects do quill no dark */
+#notas-toolbar .ql-picker-label:focus,
+#notas-toolbar .ql-picker-label.ql-active,
+#notas-toolbar .ql-picker-item:focus,
+#notas-toolbar .ql-picker-item.ql-selected {
+    outline: none !important;
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* feedback msg abaixo dos botões */
+#notas-feedback {
+    min-height: 1rem;
+}
+
+/* alinhar o bloco dos botões com o card */
+#pagina-anotacoes .d-flex.flex-wrap.gap-2.mt-4 {
+    max-width: 900px;
+    margin: 1.5rem auto 0 auto;
+}
+
+/* toolbar cola no topo do bloco, e agora criamos um padding lateral */
+#notas-toolbar {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+/* corpo do editor */
+#editor-notas {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* feedback + botões */
+#pagina-anotacoes .d-flex.flex-wrap.gap-2.mt-4 {
+    max-width: 100%;
+    margin: 1rem auto 0 auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+#notas-feedback {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.ql-editor-dark {
+    background-color: #0f1a2d !important;
+    color: #fff !important;
+}
+
+/* checklist list-style fica feio no dark se não ajustar */
+#editor-notas .ql-editor .ql-ui {
+    color: var(--text-primary);
+}
+
+/* bloco de código */
+#editor-notas .ql-editor pre.ql-code-block {
+    background-color: #0f1a2d;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-family: Consolas, 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #8ecbff;
+    overflow-x: auto;
+}
+
+/* inline code */
+#editor-notas .ql-editor code {
+    background-color: rgba(74, 144, 226, 0.15);
+    border: 1px solid rgba(74, 144, 226, 0.4);
+    border-radius: 4px;
+    padding: 0 0.3rem;
+    font-family: Consolas, 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #8ecbff;
+}
+
+/* blockquote */
+#editor-notas .ql-editor blockquote {
+    border-left: 3px solid var(--accent-primary);
+    margin: 0.5rem 0 0.5rem 0;
+    padding: 0.5rem 0.75rem;
+    background-color: rgba(74, 144, 226, 0.08);
+    border-radius: 4px;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* linha horizontal (divider) */
+#editor-notas .ql-editor hr {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 1.5rem 0;
+    opacity: 0.6;
+}
+
+/* lista checklist do Quill (ql-list="check") */
+#editor-notas .ql-editor .ql-indent-1 {
+    padding-left: 1.5rem;
+}
+
+.ql-editor.ql-blank::before {
+    color: #9daac6 !important;
+    content: attr(data-placeholder) !important;
+    font-style: italic !important;
+    left: 33px !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    right: 15px !important;
+}
+
+/* linha vertical entre blocos de ação */
+.notas-divider {
+    width: 1px;
+    height: 28px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 1px;
+}
+
+/* botões menores de export/import mantendo estética */
+.btn-outline-light,
+.btn-outline-info {
+    background-color: transparent !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
+
+.btn-outline-info {
+    border-color: var(--accent-primary) !important;
+    color: var(--accent-primary) !important;
+}
+
+.btn-outline-light:hover,
+.btn-outline-info:hover {
+    background-color: rgba(74, 144, 226, 0.15) !important;
+    border-color: var(--accent-primary) !important;
+    color: var(--accent-primary) !important;
+}
+
+/* ícone alinhadinho nesses botões */
+.btn-outline-light i,
+.btn-outline-info i {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+/* estado padrão dos botões rápidos no topo */
+.action-open {
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 0.9rem;
+    line-height: 1.2;
+    font-weight: 500;
+    background: transparent;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* cada um tem cor própria no texto já (verde, amarelo, azul etc.) então a base é transparente */
+
+/* estado ativo só pro botão realmente selecionado */
+.action-open-active {
+    border-color: var(--accent-primary);
+    background-color: rgba(74, 144, 226, 0.08);
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+}
+
+/* ícones dentro dos atalhos */
+.action-open i {
+    font-size: 1rem;
+    line-height: 1;
+}

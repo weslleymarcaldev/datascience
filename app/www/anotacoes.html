@@ -1,0 +1,141 @@
+<!-- Anotações -->
+<section id="pagina-anotacoes" class="page-section container-fluid">
+    <h2 class="mb-4"><i class="bi bi-pencil-square"></i> Anotações</h2>
+    <!-- <p class="lead">Espaço livre para suas anotações de estudo</p> -->
+
+    <div class="card card-notas bg-transparent border-0">
+        <div class="card-body p-4 notas-wrapper">
+
+            <!-- barra de ferramentas -->
+            <div id="notas-toolbar" class="mb-0 ql-toolbar-custom ql-toolbar ql-snow">
+
+                <!-- Fonte / Tamanho -->
+                <span class="ql-formats">
+                    <select class="ql-font" alt="Fonte"></select>
+                    <select class="ql-size" alt="Tamanho"></select>
+                </span>
+
+                <!-- Headings / parágrafo -->
+                <span class="ql-formats" alt="Títulos">
+                    <select class="ql-header">
+                        <option selected></option>
+                        <option value="1">Título 1</option>
+                        <option value="2">Título 2</option>
+                        <option value="3">Título 3</option>
+                    </select>
+                </span>
+
+                <!-- Estilos de texto -->
+                <span class="ql-formats" alt="Estilos de texto">
+                    <button class="ql-bold"></button>
+                    <button class="ql-italic"></button>
+                    <button class="ql-underline"></button>
+                    <button class="ql-strike"></button>
+                </span>
+
+                <!-- Cor do texto / Cor de fundo -->
+                <span class="ql-formats" alt="Cor do texto / Cor de fundo">
+                    <select class="ql-color"></select>
+                    <select class="ql-background"></select>
+                </span>
+
+                <!-- Link e imagem -->
+                <span class="ql-formats" alt="Link e imagem">
+                    <button class="ql-link"></button>
+                    <button class="ql-image"></button>
+                </span>
+
+                <!-- Alinhamento e indentação -->
+                <span class="ql-formats" alt="Alinhamento e indentação">
+                    <button class="ql-align" value=""></button>
+                    <button class="ql-align" value="center"></button>
+                    <button class="ql-align" value="right"></button>
+                    <button class="ql-align" value="justify"></button>
+                </span>
+
+                <span class="ql-formats" alt="Indentação">
+                    <button class="ql-indent" value="-1"></button>
+                    <button class="ql-indent" value="+1"></button>
+                </span>
+
+                <!-- Listas -->
+                <span class="ql-formats" alt="Listas">
+                    <button class="ql-list" value="bullet"></button>
+                    <button class="ql-list" value="ordered"></button>
+                    <button class="ql-list" value="check"></button>
+                </span>
+
+                <!-- Blocos semânticos -->
+                <span class="ql-formats" aria-label="Blocos semânticos">
+                    <button class="ql-blockquote" type="button" aria-label="Bloco de citação" title="Bloco de citação">
+                        <i class="bi bi-quote" aria-hidden="true"></i>
+                    </button>
+                    <button class="ql-code-block" type="button" aria-label="Bloco de código" title="Bloco de código">
+                        <i class="bi bi-code" aria-hidden="true"></i>
+                    </button>
+                </span>
+
+                <!-- Código inline, linha horizontal -->
+                <span class="ql-formats" aria-label="Código inline e utilitários">
+                    <button class="ql-code" type="button" aria-label="Código inline" title="Código inline">
+                        <i class="bi bi-code" aria-hidden="true"></i>
+                    </button>
+
+                    <button class="ql-divider" type="button" aria-label="Inserir linha horizontal"
+                        title="Inserir linha horizontal">—</button>
+                </span>
+
+
+                <!-- Tabela -->
+                <span class="ql-formats" alt="Tabela">
+                    <button class="ql-table"></button>
+                </span>
+
+                <!-- Limpar formatação -->
+                <span class="ql-formats" alt="Limpar formatação">
+                    <button class="ql-clean" alt="Limpar formatação"></button>
+                </span>
+            </div>
+
+
+            <!-- área editável rica -->
+            <div id="editor-notas" class="ql-container-custom">
+                <!-- quill injeta .ql-editor aqui dentro -->
+            </div>
+
+            <!-- botões -->
+            <div class="d-flex flex-wrap gap-2 mt-4 align-items-center">
+
+                <button class="btn btn-primary d-flex align-items-center gap-2" onclick="salvarNotas()">
+                    <i class="bi bi-save"></i> <span>Salvar</span>
+                </button>
+
+                <button class="btn btn-secondary d-flex align-items-center gap-2" onclick="carregarNotas()">
+                    <i class="bi bi-arrow-clockwise"></i> <span>Carregar</span>
+                </button>
+
+                <button class="btn btn-danger d-flex align-items-center gap-2" onclick="limparNotas()">
+                    <i class="bi bi-trash"></i> <span>Limpar</span>
+                </button>
+
+                <div class="vr flex-shrink-0 opacity-50 notas-divider"></div>
+
+                <button class="btn btn-outline-light btn-sm-flex d-flex align-items-center gap-2"
+                    onclick="exportarNotasHTML()">
+                    <i class="bi bi-download"></i> <span>Exportar (.html)</span>
+                </button>
+
+                <label class="btn btn-outline-info btn-sm-flex d-flex align-items-center gap-2 m-0">
+                    <i class="bi bi-upload"></i>
+                    <span>Importar (.html)</span>
+                    <input id="importar-notas-input" type="file" accept=".html,.htm,text/html" class="d-none"
+                        onchange="importarNotasHTML(this)">
+                </label>
+
+            </div>
+
+            <div id="notas-feedback" class="mt-2 small text-muted"></div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,27 @@
+| Arquivo CSS   | Conteúdo principal                                      |
+| ------------- | ------------------------------------------------------- |
+| base.css      | Variáveis, resets, layout geral, botões, formulários... |
+| anotacoes.css | Estilos específicos do#pagina-anotacoes, Quill etc      |
+| checklist.css | Estilos do#checklist-programacao,.check-itemetc         |
+| resumo.css    | Estilos do#pagina-resumo, cards, títulos, alertas...    |
+
+
+#copiar o conteúdo de um arquivo CSS para um arquivo SCSS
+cat assets/css/resumo.css > assets/scss/_resumo.scss
+
+#vários arquivos CSS que quer transferir para SCSS
+for f in css/*.css; do
+  filename=$(basename "$f" .css)
+  cp "$f" "scss/_${filename}.scss"
+done
+
+#Para automatizar a compilação do seu Sass
+sass --watch scss/:css/ --style=compressed
+sass --watch assets/scss/styles.scss:assets/css/styles.min.css --style=compressed
+
+
+#Compilar com source map
+sass --style=compressed --source-map scss/styles.scss css/styles.min.css
+
+#Compile com Sass
+sass --style=compressed scss/styles.scss css/styles.min.css

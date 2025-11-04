@@ -1166,3 +1166,15 @@ window.renameColumn = renameColumn;
 window.askRemoveColumn = askRemoveColumn;
 window.removeColumn = removeColumn;
 window.editColumn = editColumn;
+
+// Compatibilidade entre versões do app (alias para evitar mismatches)
+try {
+    if (typeof window.initTodo === 'function' && typeof window.inicializarTodoListas !== 'function') {
+        window.inicializarTodoListas = window.initTodo;
+    } else if (typeof window.inicializarTodoListas === 'function' && typeof window.initTodo !== 'function') {
+        window.initTodo = window.inicializarTodoListas;
+    }
+} catch (err) {
+    console.warn('Erro ao criar aliases para inicializadores do To-do:', err);
+}
+
