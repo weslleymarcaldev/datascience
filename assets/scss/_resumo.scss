@@ -1,6 +1,6 @@
 #pagina-resumo {
     padding: 2rem 0;
-    background-color: #1a1a1a;
+    // background-color: #1a1a1a;
 }
 
 #pagina-resumo h2 {
@@ -8,36 +8,50 @@
     margin-bottom: 2rem;
 }
 
-/* Estilo para os cards */
 .card {
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #2c2c2c;
-    border: 1px solid #444;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    margin-bottom: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .card-header {
-    border-bottom: 1px solid #444;
-    background-color: #333;
-    border-radius: 12px 12px 0 0 !important;
+    background: rgba(74, 144, 226, 0.1);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 20px;
+    border-radius: 14px 14px 0 0;
+}
+
+.card-header h5 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
 }
 
 .card-body {
-    padding: 1.25rem;
+    padding: 8px 3px;
+    color: var(--text-secondary);
+    scrollbar-gutter: stable;
+}
+
+.card-body h6 {
+    color: var(--text-primary);
+    margin-top: 15px;
 }
 
 .card-body ul {
-    margin-bottom: 0;
+    margin-left: 15px !important;
 }
 
-.card-body li {
-    margin-bottom: 0.5rem;
+/* Evita “salto” do sticky ao rolar dentro do card */
+.card .card-header {
+    backdrop-filter: blur(2px);
 }
 
 /* Alerta personalizado */
@@ -53,4 +67,10 @@
     .card {
         margin-bottom: 1rem;
     }
+}
+
+.text-secondary {
+    --bs-text-opacity: 1 !important;
+    color: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity)) !important;
+    padding: 1rem;
 }

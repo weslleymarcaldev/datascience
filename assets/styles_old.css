@@ -159,8 +159,7 @@ body {
     /* se quiser pode deixar full width sem margin */
 }
 
-/* responsividade extra:
-       em telas menores a sidebar já começa escondida se você quiser */
+/* responsividade extra: em telas menores a sidebar já começa escondida se você quiser */
 @media (max-width: 768px) {
     .sidebar-area {
         position: fixed;

@@ -1,0 +1,97 @@
+.roadmap-container {
+  position: relative;
+  padding-left: 50px;
+}
+
+.roadmap-step {
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.roadmap-step::before {
+  content: '';
+  position: absolute;
+  left: -35px;
+  top: 35px;
+  width: 2px;
+  height: 100%;
+  background: var(--border-color);
+}
+
+.roadmap-step:last-child::before {
+  display: none;
+}
+
+.roadmap-number {
+  position: absolute;
+  left: -50px;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+  box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3);
+}
+
+.roadmap-content {
+  background: var(--bg-card);
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+}
+
+.roadmap-content h4 {
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    margin-bottom: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+    background: rgba(74, 144, 226, 0.1);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 20px;
+    border-radius: 14px 14px 0 0;
+}
+
+.card-header h5 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+.card-body {
+    padding: 8px 3px;
+    color: var(--text-secondary);
+    scrollbar-gutter: stable;
+}
+
+.card-body h6 {
+    color: var(--text-primary);
+    margin-top: 15px;
+}
+
+.card-body ul {
+    margin-left: 15px !important;
+}
+
+/* Evita “salto” do sticky ao rolar dentro do card */
+.card .card-header {
+    backdrop-filter: blur(2px);
+}

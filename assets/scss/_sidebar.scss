@@ -1,0 +1,120 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.sidebar {
+  min-width: 260px;
+  max-width: 260px;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  transition: all 0.3s;
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.sidebar-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-header h3 {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.sidebar ul.components {
+  padding: 20px 0;
+}
+
+.sidebar ul li {
+  margin: 5px 0;
+}
+
+.sidebar ul li a {
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  display: block;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.3s;
+  border-left: 3px solid transparent;
+}
+
+.sidebar ul li a:hover {
+  color: var(--text-primary);
+  background: rgba(74, 144, 226, 0.1);
+  border-left-color: var(--accent-primary);
+}
+
+.sidebar ul li a i {
+  margin-right: 10px;
+  width: 20px;
+  text-align: center;
+}
+
+.sidebar-link.active {
+    background-color: rgba(0, 123, 255, .15);
+    /* leve azul translúcido */
+    color: #0d6efd !important;
+    /* azul bootstrap */
+    border-left: 3px solid #0d6efd;
+    padding-left: 1.5rem;
+    /* compensa a borda */
+}
+
+/* sidebar wrapper base */
+.app-wrapper {
+    min-height: 100vh;
+    background-color: #0b1220;
+    display: flex;
+}
+
+/* sidebar estilo base */
+.sidebar-area {
+    width: 240px;
+    background-color: #151e2b;
+    border-right: 1px solid #2a3a4f;
+    transition: all 0.2s ease;
+    flex: 0 0 240px;
+    max-width: 240px;
+    height: 100dvh;
+    overflow-y: auto;
+    position: sticky;
+    top: 0;
+}
+/* estado COLAPSADO */
+.app-wrapper.is-collapsed .sidebar-area {
+    margin-left: -240px;
+    /* empurra a sidebar pra fora */
+}
+
+.app-wrapper.is-collapsed #conteudo {
+    /* se quiser pode deixar full width sem margin */
+}
+
+/* responsividade extra: em telas menores a sidebar já começa escondida se você quiser */
+@media (max-width: 768px) {
+    .sidebar-area {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 999;
+        /* por cima do conteúdo */
+    }
+
+    /* no mobile, quando "colapsado", some totalmente */
+    .app-wrapper.is-collapsed .sidebar-area {
+        transform: translateX(-100%);
+        margin-left: 0;
+    }
+
+    /* se a sidebar estiver aberta no mobile, podemos fazer um overlay futuramente
+           (não fiz overlay agora pra não complicar o JS)
+        */
+}
